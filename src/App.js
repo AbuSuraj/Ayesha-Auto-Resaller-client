@@ -1,13 +1,12 @@
-import logo from './logo.svg';
-import './App.css';
-import Header from './Pages/SharedPages/Header/Header';
-import Footer from './Pages/SharedPages/Footer/Footer';
+import './App.css'; 
+import { RouterProvider } from 'react-router-dom';
+import { routes } from './Routes/Routes/Route';
+ 
 
 function App() {
   return (
-    <div className="App">
-       <Header></Header>
-       <Footer></Footer>
+    <div>
+          <RouterProvider router={routes}></RouterProvider>
     </div>
   );
 }
