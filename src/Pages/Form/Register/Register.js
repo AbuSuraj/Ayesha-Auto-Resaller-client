@@ -120,7 +120,7 @@ const Register = () => {
               {" "}
               <span className="label-text text-white">Account Type</span>
             </label>
-            <select className="input input-bordered w-full max-w-xs" {...register("accountType")}>
+            <select className="select select-bordered w-full max-w-xs" {...register("accountType")}>
                 <option disabled value="Select account type">Select account type</option>
               <option value="admin">admin</option>
               <option value="buyer">buyer</option>
