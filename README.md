@@ -1,70 +1,45 @@
-# Getting Started with Create React App
+ # Ayesha Auto Reseller
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Project Description
+<li>A simple fitness trainging platform for a professional trainer.</li>
+<li>Navbar have some routes, among them Add Service, My-Reviews Routes are private, others public routes are home, Blog, login, and register</li> 
+<li>Home page have a few section such as banner, Services Features, FAQ and so on</li> 
+<li>initally 3 services are shown on the home page, nevertheless, if user click "See All Service" then one  can see available all services</li> 
+<li>In service card, relevant information are there, if user click details button, then service details as well as reviews for this particular service are displayed.</li> 
+<li>Login is must needed to write a review.</li> 
+<li>Reviews are sorted according to their insetion time</li>
+<li>"My-Review" page show all review that user gave for different services.Additionally, user can delete or edit a review</li> 
+<li>Fascinatingly, user can add a service.Surely, user have to login to get access of this.</li> 
+<li>Some vitally important questions are available in Blog pages</li> 
+<li>Dynamic page title is also available</li> 
+<li>Sensetive information are kept away from public with the help of environment varibale</li>
 
-## Available Scripts
 
-In the project directory, you can run:
 
-### `npm start`
+## Project live site link:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+<li>
+This project hosted in firebase.
+ Live site link-1: https://ruhi-fitness-care.web.app
+ Live site link-2: https://ruhi-fitness-care.firebaseapp.com/
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+</li>
 
-### `npm test`
+### Used Resources 
+<li>Firebase: https://firebase.google.com/</li>
+<li>React Router Dom: https://reactrouter.com/en/main</li>
+<li>Tailwind CSS: https://tailwindcss.com/</li>
+<li>React Icons: https://react-icons.github.io/react-icons/</li>
+<li>React Hot-toast: https://react-hot-toast.com/</li>
+<li>LottieFiles: https://lottiefiles.com/animation/react</li>
+<li>AOS: https://michalsnik.github.io/aos/</li>
+<li>sweetalert2: https://sweetalert2.github.io/</li>
+<li>React-Photo-view: https://react-photo-view.vercel.app/docs/getting-started</li>
+<li>React Hook form: https://react-hook-form.com/get-started/</li>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+ 
 
-### `npm run build`
+ 
+ 
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+ 
