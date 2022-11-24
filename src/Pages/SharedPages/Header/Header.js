@@ -5,7 +5,7 @@ const Header = () => {
     const menuItems = <React.Fragment>
   <li><Link to="/">Home</Link></li>
   <li><Link to="/appointment">Appointment</Link></li>
-  <li><Link to="/about">About</Link></li>
+  <li><Link to="/blog">Blog</Link></li>
   {/* {user?.uid ?
       <>
           <li><Link to="/dashboard">Dashboard</Link></li>
@@ -14,7 +14,7 @@ const Header = () => {
       : <li><Link to="/login">Login</Link></li>} */}
 </React.Fragment>
     return (
-        <div className="navbar bg-base-100 flex justify-between">
+        <div className="navbar bg-base-200 flex justify-between">
         <div className="navbar-start">
             <div className="dropdown">
                 <label tabIndex={0} className="btn btn-ghost lg:hidden">
