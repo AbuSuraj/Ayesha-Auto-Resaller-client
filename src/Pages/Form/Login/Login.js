@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../Context/AuthProvider';
 import useTitle from '../../../Hooks/useTitle';
@@ -7,7 +8,7 @@ import useTitle from '../../../Hooks/useTitle';
 const Login = () => {
     useTitle("Sign In");
     const { register, formState: { errors }, handleSubmit } = useForm();
-    const {signin} = useContext(AuthContext);
+    const {signin, signInWithGoogle} = useContext(AuthContext);
     const [loginError, setLoginError] = useState('');
     const [loginUserEmail, setLoginUserEmail] = useState('');
     // const [token] = useToken(loginUserEmail);
@@ -30,6 +31,14 @@ const Login = () => {
             });
     }
 
+     // Google Signin
+     const handleGoogleSignin = () => {
+        signInWithGoogle().then((result) => {
+          toast.success("Login Success!");
+          console.log(result.user);
+          navigate(from, { replace: true });
+        });
+      };
     return (
         <div className='h-full flex justify-center my-10'>
             <div className='w-96 p-7 bg-zinc-700 shadow-2xl rounded-2xl'>
@@ -62,7 +71,7 @@ const Login = () => {
                 </form>
                 <p className='text-white'>New to this site? <Link className='text-secondary' to="/register">Create new Account</Link></p>
                 <div className="divider text-white">OR</div>
-                <button className='btn btn-outline w-full text-white'>CONTINUE WITH GOOGLE</button>
+                <button onClick={handleGoogleSignin} className='btn btn-outline w-full text-white'>CONTINUE WITH GOOGLE</button>
             </div>
         </div>
     );

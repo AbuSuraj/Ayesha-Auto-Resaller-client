@@ -14,13 +14,20 @@ const Header = () => {
   <li><Link to="/appointment">Appointment</Link></li>
   <li><Link to="/blog">Blog</Link></li>
   {/* <li><Link to="/login">Sign In</Link></li> */}
-  <li><Link to="/register">Sign Up</Link></li>
+  
   {user?.uid ?
       <>
           <li><Link to="/dashboard">Dashboard</Link></li>
+          <li><Link> {user?.displayName}</Link></li>
           <li><button onClick={handleLogOut}>Sign out</button></li>
       </>
-      : <li><Link to="/login">Sign In</Link></li>}
+      : 
+      <>
+      <li><Link to="/login">Sign In</Link></li>
+      <li><Link to="/register">Sign Up</Link></li>
+      </>
+      
+      }
 </React.Fragment>
     return (
         <div className="navbar bg-base-200 flex justify-between">
