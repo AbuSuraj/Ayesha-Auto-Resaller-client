@@ -1,6 +1,12 @@
-import React from 'react';
-
+import React, { useEffect } from 'react';
+import useTitle from '../../Hooks/useTitle';
+import AOS from "aos";
+import "aos/dist/aos.css";
 const Blog = () => {
+  useTitle("Blog");
+  useEffect(() => {
+    AOS.init();
+  }, []);
     return (
         <div>
         <h1 className="text-3xl text-center font-bold font-serif my-5 ">
