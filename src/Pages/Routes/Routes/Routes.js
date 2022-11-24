@@ -5,7 +5,13 @@ import ErrorPage from "../../ErrorPage/ErrorPage";
 import Login from "../../Form/Login/Login";
 import Register from "../../Form/Register/Register";
 import Home from "../../Home/Home/Home";
-
+import DashBoard from "../../DashBoard/DashBoard/DashBoard"
+import MyOrders from "../../DashBoard/MyOrders/MyOrders";
+import DashBoardLayout from "../../../Layout/DashBoardLayout";
+import MyProducts from "../../DashBoard/MyProducts/MyProducts";
+import AllSellers from "../../DashBoard/AllSellers/AllSellers";
+import AllBuyers from "../../DashBoard/AllBuyers/AllBuyers";
+import ReportedItems from "../../DashBoard/ReportedItems/ReportedItems";
 export const routes = createBrowserRouter([
     {
         path:'/',
@@ -31,7 +37,37 @@ export const routes = createBrowserRouter([
             {
                 path:'/register',
                 element:<Register></Register>
-            }
+            },
+           
+        ]
+    },
+    {
+        path:'/dashboard',
+        element:<DashBoardLayout></DashBoardLayout>,
+        errorElement:<ErrorPage></ErrorPage>,
+        children:[
+            {
+                path:'/dashboard',
+                element:<MyOrders></MyOrders>
+            },
+            {
+                path:'/dashboard/myproducts',
+                element:<MyProducts></MyProducts>
+            },
+            {
+                path:'/dashboard/allsellers',
+                element:<AllSellers></AllSellers>
+            },
+            {
+                path:'/dashboard/allbuyers',
+                element:<AllBuyers></AllBuyers>
+            },
+            {
+                path:'/dashboard/reporteditem',
+                element:<ReportedItems></ReportedItems>
+            },
+            
+         
         ]
     }
 ])
