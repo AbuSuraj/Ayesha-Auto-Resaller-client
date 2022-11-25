@@ -14,6 +14,7 @@ import AllBuyers from "../../DashBoard/AllBuyers/AllBuyers";
 import ReportedItems from "../../DashBoard/ReportedItems/ReportedItems";
 import AddAProduct from "../../DashBoard/AddAProduct/AddAProduct";
 import AddCategory from "../../DashBoard/AddCategory/AddCategory";
+import Products from "../../Home/Categories/Category/Products/Products";
 export const routes = createBrowserRouter([
     {
         path:'/',
@@ -39,6 +40,10 @@ export const routes = createBrowserRouter([
             {
                 path:'/register',
                 element:<Register></Register>
+            },
+            {
+                path:'/category/:id',
+                element:<Products></Products>,
             },
            
         ]

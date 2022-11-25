@@ -36,6 +36,8 @@ This project hosted in firebase.
 <li>sweetalert2: https://sweetalert2.github.io/</li>
 <li>React-Photo-view: https://react-photo-view.vercel.app/docs/getting-started</li>
 <li>React Hook form: https://react-hook-form.com/get-started/</li>
+<li>React Query  https://tanstack.com/query/v4/docs/quick-start</li>
+<li>date-fns: https://www.npmjs.com/package/date-fns/</li>
 
  
 
