@@ -2,7 +2,7 @@ import { format } from 'date-fns';
 import React from 'react';
 
 const Product = ({product}) => {
-    const {productName,condition,originalPrice,resalePrice,location,mobile,productDescription,purchaseYear,createdDate,image} = product;
+    const {productName,condition,originalPrice,resalePrice,location,mobile,productDescription,purchaseYear,createdDate,image, seller} = product;
  const date = new Date();
  const year = date.getFullYear();
   const pYear = parseInt(purchaseYear)
@@ -25,9 +25,10 @@ const Product = ({product}) => {
         <p><span className='font-bold'>Years of used:</span> {usedYear} years</p>
         <p><span className='font-bold'>Overview:</span> {productDescription}</p>
         <p><span className='font-bold'>Posted Date:</span> {createdDate.slice(0,10)}</p>
+        <p><span className='font-bold'> Seller Name:</span> {seller}</p>
      </div>
     <div className="card-actions justify-end">
-      <button className="btn btn-primary">Buy Now</button>
+      <button className="btn btn-primary">Book Now</button>
     </div>
   </div>
 </div>

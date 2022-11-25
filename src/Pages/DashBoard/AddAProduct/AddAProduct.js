@@ -1,8 +1,9 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../../Context/AuthProvider';
 
 const AddAProduct = () => {
   const imageHostKey = process.env.REACT_APP_imgbb_key
@@ -11,6 +12,8 @@ const AddAProduct = () => {
         handleSubmit,
         formState: { errors },
       } = useForm();
+      const {user} = useContext(AuthContext)
+      // console.log(user.displayName)
       const date = new Date()
       const [addProductError, setAddProductError] = useState("");
       const [addedProduct, setAddedProduct] = useState("");
@@ -39,8 +42,8 @@ const AddAProduct = () => {
                   productDescription: data.productDescription,
                   purchaseYear: data.purchaseYear,
                   image: imgData.data.url,
-                  createdDate: date
-                   
+                  createdDate: date,
+                  seller: user.displayName
                 }
                 console.log(product);
                 // added product into db
