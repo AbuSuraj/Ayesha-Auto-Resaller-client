@@ -47,7 +47,14 @@ const AddAProduct = () => {
         setAddProductError("");
      }
     //  fetching categories
-
+useEffect(()=>{
+  axios.get('http://localhost:5000/categories')
+  .then((data) =>{
+    console.log(data);
+    setCategories(data.data);
+  })
+  .catch((error) => console.log(error))
+},[])
     return (
         <div className=" flex justify-center my-10 ">
         <div className="w-96 p-7 bg-zinc-700 shadow-2xl rounded-2xl">
