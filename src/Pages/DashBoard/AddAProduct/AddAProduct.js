@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 
@@ -11,6 +12,7 @@ const AddAProduct = () => {
       } = useForm();
       const [addProductError, setAddProductError] = useState("");
       const [addedProduct, setAddedProduct] = useState("");
+      const [categories, setCategories] = useState([])
      const handleAddProduct = (data) =>{
       const image = data.image[0];
       const formData = new FormData();
@@ -29,19 +31,22 @@ const AddAProduct = () => {
                   originalPrice: data.originalPrice,
                   resalePrice: data.resalePrice,
                   location: data.location,
-                  category: data.category,
+                  categoryId: data.category,
                   condition: data.condition,
                   mobile: data.mobile,
                   productDescription: data.productDescription,
                   purchaseYear: data.purchaseYear,
-                    image: imgData.data.url
+                  image: imgData.data.url,
+                   
                 }
+                console.log(product);
               }
             }
               )
                 
         setAddProductError("");
      }
+    //  fetching categories
 
     return (
         <div className=" flex justify-center my-10 ">
@@ -121,10 +126,13 @@ const AddAProduct = () => {
                 <span className="label-text text-white">Category</span>
               </label>
               <select className="select select-bordered w-full max-w-xs" {...register("category")}>
-                  <option disabled selected value="Select your category">Select Category</option>
-                <option value="Toyeta">Toyeta</option>
-                <option value="Nissan">Nissan</option>
-                <option value="BMW">BMW</option>
+                {
+                  categories.map(category => <option key={category._id}
+                    
+                  value= {category.category._id}
+                  >{category.categoryName}</option>)
+                }
+                
                 
               </select>
             </div>
@@ -216,13 +224,7 @@ const AddAProduct = () => {
             />
             {addProductError && <p className="text-red-600">{addProductError}</p>}
           </form>
-          {/* <p className="text-white">
-            Already have an account{" "}
-            <Link className="text-secondary" to="/login">
-              Please Sign In
-            </Link>
-          </p> */}
-           
+  
           
         </div>
       </div>

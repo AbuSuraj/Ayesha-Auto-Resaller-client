@@ -13,6 +13,7 @@ import AllSellers from "../../DashBoard/AllSellers/AllSellers";
 import AllBuyers from "../../DashBoard/AllBuyers/AllBuyers";
 import ReportedItems from "../../DashBoard/ReportedItems/ReportedItems";
 import AddAProduct from "../../DashBoard/AddAProduct/AddAProduct";
+import AddCategory from "../../DashBoard/AddCategory/AddCategory";
 export const routes = createBrowserRouter([
     {
         path:'/',
@@ -66,6 +67,10 @@ export const routes = createBrowserRouter([
             {
                 path:'/dashboard/addproduct',
                 element:<AddAProduct></AddAProduct>
+            },
+            {
+                path:'/dashboard/addcategory',
+                element:<AddCategory></AddCategory>
             },
             {
                 path:'/dashboard/reporteditem',
