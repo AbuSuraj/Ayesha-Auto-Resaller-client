@@ -1,9 +1,12 @@
 import { useQuery } from '@tanstack/react-query';
-import React from 'react';
+import React, { useContext } from 'react';
 import { useParams } from 'react-router-dom';
+import Loading from '../../../../../components/Loading/Loading';
+import { AuthContext } from '../../../../../Context/AuthProvider';
 import Product from './Product/Product';
 
 const Products = () => {
+    const {loading} = useContext(AuthContext)
     const {id} = useParams();
     console.log(id);
     const { data: products = [], refetch, isLoading } = useQuery({
@@ -14,6 +17,9 @@ const Products = () => {
             return data
         }
     });
+    if(loading){
+        return  <div className=" my-5 mx-auto w-16 h-16 border-4 border-dashed rounded-full animate-spin dark:border-violet-400"></div> 
+    }
     console.log(products)
     return (
         <div>

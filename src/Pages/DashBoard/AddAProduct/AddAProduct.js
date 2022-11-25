@@ -3,6 +3,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
+import Loading from '../../../components/Loading/Loading';
 import { AuthContext } from '../../../Context/AuthProvider';
 
 const AddAProduct = () => {
@@ -12,7 +13,8 @@ const AddAProduct = () => {
         handleSubmit,
         formState: { errors },
       } = useForm();
-      const {user} = useContext(AuthContext)
+      const {user, loading} = useContext(AuthContext)
+     
       // console.log(user.displayName)
       const date = new Date()
       const [addProductError, setAddProductError] = useState("");
@@ -78,6 +80,10 @@ useEffect(()=>{
   })
   .catch((error) => console.log(error))
 },[])
+
+if(loading){
+  return  <div className=" my-5 mx-auto w-16 h-16 border-4 border-dashed rounded-full animate-spin dark:border-violet-400"></div> 
+}
     return (
         <div className=" flex justify-center my-10 ">
         <div className="w-96 p-7 bg-zinc-700 shadow-2xl rounded-2xl">

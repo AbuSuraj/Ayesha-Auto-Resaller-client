@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
+import Loading from '../../../components/Loading/Loading';
+import { AuthContext } from '../../../Context/AuthProvider';
 
 const AddCategory = () => {
     const imageHostKey = process.env.REACT_APP_imgbb_key
@@ -9,7 +11,7 @@ const AddCategory = () => {
         handleSubmit,
         formState: { errors },
       } = useForm();
-
+ const {loading} = useContext(AuthContext)
       const [addProductError, setAddProductError] = useState("");
       const [addedProduct, setAddedProduct] = useState("");
      const handleAddCategory = (data) =>{
@@ -54,7 +56,9 @@ const AddCategory = () => {
                 
         setAddProductError("");
      }
-
+     if(loading){
+      return  <div className=" my-5 mx-auto w-16 h-16 border-4 border-dashed rounded-full animate-spin dark:border-violet-400"></div> 
+  }
      
     return (
         <div className=" flex justify-center my-10 ">

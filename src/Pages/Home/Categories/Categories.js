@@ -1,8 +1,11 @@
 import { useQuery } from '@tanstack/react-query';
-import React from 'react';
+import React, { useContext } from 'react';
+import Loading from '../../../components/Loading/Loading';
+import { AuthContext } from '../../../Context/AuthProvider';
 import Category from './Category/Category';
 
 const Categories = () => {
+    const {loading} = useContext(AuthContext)
     const { data: categories = [], refetch, isLoading } = useQuery({
         queryKey: ['categories'],
         queryFn: async () => {
@@ -11,6 +14,7 @@ const Categories = () => {
             return data
         }
     });
+    if(loading){<Loading></Loading>}
     console.log(categories)
     return (
         <div className='my-10'>
