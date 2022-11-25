@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 
 const AddAProduct = () => {
@@ -40,6 +41,23 @@ const AddAProduct = () => {
                    
                 }
                 console.log(product);
+                // added product into db
+                fetch('http://localhost:5000/addproduct', {
+                  method: 'POST',
+                  headers: {
+                      'content-type': 'application/json',
+                  },
+                  body: JSON.stringify(product)
+              })
+                  .then(res => res.json())
+                  .then(data => {
+                      console.log(data)
+                      if(data.acknowledged){
+                          toast.success('Product added successfully')
+                          // form.reset();  
+                      }
+                  })
+                  .catch(er => console.error(er));
               }
             }
               )
@@ -136,7 +154,7 @@ useEffect(()=>{
                 {
                   categories.map(category => <option key={category._id}
                     
-                  value= {category.category._id}
+                  value= {category._id}
                   >{category.categoryName}</option>)
                 }
                 
