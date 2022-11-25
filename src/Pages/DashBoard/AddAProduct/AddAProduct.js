@@ -11,6 +11,7 @@ const AddAProduct = () => {
         handleSubmit,
         formState: { errors },
       } = useForm();
+      const date = new Date()
       const [addProductError, setAddProductError] = useState("");
       const [addedProduct, setAddedProduct] = useState("");
       const [categories, setCategories] = useState([])
@@ -38,6 +39,7 @@ const AddAProduct = () => {
                   productDescription: data.productDescription,
                   purchaseYear: data.purchaseYear,
                   image: imgData.data.url,
+                  createdDate: date
                    
                 }
                 console.log(product);
