@@ -34,7 +34,7 @@ const DashBoardLayout = () => {
 
                 </div>
             </div>
-            <Footer></Footer>
+            {/* <Footer></Footer> */}
         </div>
     );
 };
