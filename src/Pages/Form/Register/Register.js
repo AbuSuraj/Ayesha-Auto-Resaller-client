@@ -5,6 +5,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import Loading from "../../../components/Loading/Loading";
 import { AuthContext } from "../../../Context/AuthProvider";
 import useTitle from "../../../Hooks/useTitle";
+import useToken from "../../../Hooks/useToken";
 
 const Register = () => {
   useTitle("Sign Up");
@@ -17,13 +18,13 @@ const Register = () => {
 
   const [signUpError, setSignUPError] = useState("");
   const [createdUserEmail, setCreatedUserEmail] = useState("");
-  // const [token] = useToken(createdUserEmail);
+  const [token] = useToken(createdUserEmail);
   const navigate = useNavigate();
   const location = useLocation()
   const from = location.state?.from?.pathname || '/'
-  // if(token){
-  //     navigate('/');
-  // }
+  if(token){
+      navigate('/');
+  }
 
   const handleSignUp = (data) => {
     setSignUPError("");
@@ -55,7 +56,7 @@ const Register = () => {
       console.log(result.user.displayName,result.user.email, accountType);
       toast.success("User created Successfully with Google!");
       saveUser(result.user.displayName,result.user.email, accountType);
-      navigate(from, { replace: true })
+      // navigate(from, { replace: true })
     })
   }
   const saveUser = (name, email, accountType) =>{

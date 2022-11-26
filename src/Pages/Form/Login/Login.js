@@ -5,6 +5,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Loading from '../../../components/Loading/Loading';
 import { AuthContext } from '../../../Context/AuthProvider';
 import useTitle from '../../../Hooks/useTitle';
+import useToken from '../../../Hooks/useToken';
 
 const Login = () => {
     useTitle("Sign In");
@@ -12,11 +13,14 @@ const Login = () => {
     const {signin, signInWithGoogle,loading} = useContext(AuthContext);
     const [loginError, setLoginError] = useState('');
     const [loginUserEmail, setLoginUserEmail] = useState('');
-    // const [token] = useToken(loginUserEmail);
+    const [token] = useToken(loginUserEmail);
     const location = useLocation();
     const navigate = useNavigate();
 
     const from = location.state?.from?.pathname || '/';
+    if (token) {
+        navigate(from, { replace: true });
+    }
     const handleLogin = data => {
         console.log(data);
         setLoginError('');
@@ -36,10 +40,12 @@ const Login = () => {
      const handleGoogleSignin = () => {
         signInWithGoogle().then((result) => {
           toast.success("Login Success!");
-          console.log(result.user);
-          navigate(from, { replace: true });
+          console.log(result.user.email);
+          setLoginUserEmail(result.user.email);
+        //   navigate(from, { replace: true });
         });
       };
+      console.log(loginUserEmail);
 
       if(loading){
         return  <div className=" my-5 mx-auto w-16 h-16 border-4 border-dashed rounded-full animate-spin dark:border-violet-400"></div> 
