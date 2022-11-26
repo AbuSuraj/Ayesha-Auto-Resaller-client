@@ -4,7 +4,7 @@ import { AuthContext } from "../../../../../../../Context/AuthProvider";
 
 const BookingModal = ({product, setBook}) => {
     const {_id,productName,condition,originalPrice,resalePrice,location,mobile,productDescription,purchaseYear,createdDate,image, seller} = product;
-    const {user} = useContext(AuthContext);
+    const {user,loading} = useContext(AuthContext);
     
     const name = user.displayName;
     const email = user.email;
@@ -53,6 +53,9 @@ console.log(booking)
             })
 
 
+    }
+    if(loading){
+        return  <div className=" my-5 mx-auto w-16 h-16 border-4 border-dashed rounded-full animate-spin dark:border-violet-400"></div> 
     }
   return (
     <>
