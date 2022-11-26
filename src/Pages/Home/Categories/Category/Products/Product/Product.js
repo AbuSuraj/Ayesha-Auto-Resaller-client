@@ -1,8 +1,10 @@
 import { format } from 'date-fns';
-import React from 'react';
+import React, { useState } from 'react';
+import BookingModal from './BookingModal/BookingModal';
 
 const Product = ({product}) => {
-    const {productName,condition,originalPrice,resalePrice,location,mobile,productDescription,purchaseYear,createdDate,image, seller} = product;
+  const {_id,productName,condition,originalPrice,resalePrice,location,mobile,productDescription,purchaseYear,createdDate,image, seller} = product;
+  const [book,setBook] = useState(null);
  const date = new Date();
  const year = date.getFullYear();
   const pYear = parseInt(purchaseYear)
@@ -28,8 +30,18 @@ const Product = ({product}) => {
         <p><span className='font-bold'> Seller Name:</span> {seller}</p>
      </div>
     <div className="card-actions justify-end">
-      <button className="btn btn-primary">Book Now</button>
-    </div>
+       <label 
+       onClick={() =>setBook(product)}
+       htmlFor="booking-modal" className="btn">Book Now</label> 
+      </div>
+     {
+     book &&
+     <BookingModal 
+     key={_id}
+     product = {product}
+     setBook = {setBook}
+     ></BookingModal>
+     }
   </div>
 </div>
     );
