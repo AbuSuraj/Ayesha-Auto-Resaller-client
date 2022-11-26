@@ -45,7 +45,8 @@ const AddAProduct = () => {
                   purchaseYear: data.purchaseYear,
                   image: imgData.data.url,
                   createdDate: date,
-                  seller: user.displayName
+                  seller: user.displayName,
+                  email: user.email
                 }
                 console.log(product);
                 // added product into db
