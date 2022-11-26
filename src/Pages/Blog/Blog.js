@@ -1,12 +1,17 @@
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import useTitle from '../../Hooks/useTitle';
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { AuthContext } from '../../Context/AuthProvider';
 const Blog = () => {
+const {loading} = useContext(AuthContext)
   useTitle("Blog");
   useEffect(() => {
     AOS.init();
   }, []);
+  if(loading){
+    return  <div className=" my-5 mx-auto w-16 h-16 border-4 border-dashed rounded-full animate-spin dark:border-violet-400"></div> 
+}
     return (
         <div>
         <h1 className="text-3xl text-center font-bold font-serif my-5 ">

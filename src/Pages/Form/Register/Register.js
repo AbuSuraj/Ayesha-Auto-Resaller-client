@@ -27,6 +27,7 @@ const Register = () => {
 
   const handleSignUp = (data) => {
     setSignUPError("");
+    console.log(data.password)
     createUser(data.email, data.password)
       .then((result) => {
         const user = result.user;
@@ -37,7 +38,7 @@ const Register = () => {
         };
         updateUserProfile(userInfo)
           .then(() => {
-            // saveUser(data.name, data.email);
+            saveUser(data.name, data.email, data.accountType);
           })
           .catch((err) => console.log(err));
       })
@@ -49,11 +50,28 @@ const Register = () => {
    // Google Signin
    const handleGoogleSignin = () => {
     signInWithGoogle().then(result => {
-      console.log(result.user)
+      // console.log(result.user);
+      const accountType = 'buyer';
+      console.log(result.user.displayName,result.user.email, accountType);
       toast.success("User created Successfully with Google!");
+      saveUser(result.user.displayName,result.user.email, accountType);
       navigate(from, { replace: true })
     })
   }
+  const saveUser = (name, email, accountType) =>{
+    const user ={name, email,accountType};
+    fetch('http://localhost:5000/users', {
+        method: 'POST',
+        headers: {
+            'content-type': 'application/json'
+        },
+        body: JSON.stringify(user)
+    })
+    .then(res => res.json())
+    .then(data =>{
+        setCreatedUserEmail(email);
+    })
+}
   if(loading){
     return  <div className=" my-5 mx-auto w-16 h-16 border-4 border-dashed rounded-full animate-spin dark:border-violet-400"></div> 
 }
