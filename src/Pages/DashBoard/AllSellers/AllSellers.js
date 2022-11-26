@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
+import Swal from 'sweetalert2';
 
 const AllSellers = () => {
 
@@ -11,6 +12,40 @@ const AllSellers = () => {
             return data
         }
     });
+ 
+    const handleDelete = (id) =>{
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+          }).then((result) => {
+            if (result.isConfirmed) {
+              fetch(`http://localhost:5000/seller/${id}`,{
+                method: 'DELETE'
+            })
+            .then( res =>res.json())
+            .then(data =>{
+              /// deletedCount // dont forget this spelling
+              if(data?.deletedCount > 0){
+                // const remaining = sellers?.filter(mrvw => mrvw._id !== id);
+                // setMyReview(remaining);
+                refetch()
+                 
+              }
+            })
+              Swal.fire(
+                'Deleted!',
+                'Your file has been deleted.',
+                'success'
+              )
+            }
+          })
+        }
+
     // console.log(sellers);
     if(isLoading){
         return  <div className=" my-5 mx-auto w-16 h-16 border-4 border-dashed rounded-full animate-spin dark:border-violet-400"></div> 
@@ -35,7 +70,7 @@ const AllSellers = () => {
             <td>{seller.name}</td>
             <td>{seller.email}</td>
             {/* <td>{ user?.role !== 'admin' && <button onClick={() => handleMakeAdmin(user._id)} className='btn btn-xs btn-primary'>Make Admin</button>}</td> */}
-            <td><button className='btn btn-xs btn-error'>Delete</button></td>
+            <td><button onClick={() => handleDelete(seller._id)}  className='btn btn-xs btn-error'>Delete</button></td>
           </tr>)
       }
       
