@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useContext, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
-import { Link } from 'react-router-dom';
+import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
 import Loading from '../../../components/Loading/Loading';
 import { AuthContext } from '../../../Context/AuthProvider';
 
@@ -14,7 +14,8 @@ const AddAProduct = () => {
         formState: { errors },
       } = useForm();
       const {user, loading} = useContext(AuthContext)
-     
+     const nLocation = useLocation()
+     const navigate = useNavigate();
       // console.log(user.displayName)
       const date = new Date()
       const [addProductError, setAddProductError] = useState("");
@@ -62,6 +63,7 @@ const AddAProduct = () => {
                       console.log(data)
                       if(data.acknowledged){
                           toast.success('Product added successfully')
+                          navigate("/dashboard/myproducts");
                           // form.reset();  
                       }
                   })
@@ -258,8 +260,10 @@ if(loading){
               className="btn btn-accent w-full mt-4"
               value="Add Product"
               type="submit"
+              
             />
             {addProductError && <p className="text-red-600">{addProductError}</p>}
+             
           </form>
   
           
