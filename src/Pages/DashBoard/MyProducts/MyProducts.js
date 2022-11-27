@@ -36,7 +36,6 @@ const handleAdvertise = id =>{
     if(data.modifiedCount > 0){
         Swal.fire("Added to the advertisement card successfully");
         refetch();
-   
    }
 })
 }

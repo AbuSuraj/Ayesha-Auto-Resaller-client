@@ -17,10 +17,12 @@ const Products = () => {
             return data
         }
     });
+ 
+ 
     if(loading){
         return  <div className=" my-5 mx-auto w-16 h-16 border-4 border-dashed rounded-full animate-spin dark:border-violet-400"></div> 
     }
-    console.log(products)
+     
     return (
         <div>  
 
@@ -33,6 +35,7 @@ const Products = () => {
                 products.map(product =><Product
                 key={product._id}
                 product = {product}
+                
                 ></Product>)
              }
            </div>

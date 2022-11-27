@@ -41,6 +41,35 @@ const AllSellers = () => {
       }
     });
   };
+  const handleVerify = (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, verify it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:5000/verifySeller/${id}`,{
+          method: 'PATCH',
+          headers: {
+              'content-type':'application/json'
+          },
+          // body: JSON.stringify( )
+      })
+      .then(res => res.json())
+      .then(data =>{
+          if(data.modifiedCount > 0){
+              Swal.fire("Verified successfully");
+              refetch();
+         }
+      })
+      }
+      
+    });
+  };
 
   // console.log(sellers);
   if (isLoading) {
@@ -61,6 +90,7 @@ const AllSellers = () => {
               <th>Name</th>
               <th>Email</th>
               <th>Delete</th>
+              <th>Verify</th>
             </tr>
           </thead>
           <tbody>
@@ -77,6 +107,16 @@ const AllSellers = () => {
                   >
                     Delete
                   </button>
+                </td>
+                <td>
+{
+            seller.verify ? <button className="btn btn-xs" disabled>Verified</button> :
+            <button
+                    onClick={() => handleVerify(seller._id)}
+                    className="btn btn-xs btn-secondary"
+                  >
+                    Verify
+                  </button>}
                 </td>
               </tr>
             ))}
