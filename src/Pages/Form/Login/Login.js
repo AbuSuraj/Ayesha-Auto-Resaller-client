@@ -10,7 +10,7 @@ import useToken from '../../../Hooks/useToken';
 const Login = () => {
     useTitle("Sign In");
     const { register, formState: { errors }, handleSubmit } = useForm();
-    const {signin, signInWithGoogle,loading} = useContext(AuthContext);
+    const {signin, signInWithGoogle,setLoading,loading} = useContext(AuthContext);
     const [loginError, setLoginError] = useState('');
     const [loginUserEmail, setLoginUserEmail] = useState('');
     const [token] = useToken(loginUserEmail);
@@ -33,6 +33,8 @@ const Login = () => {
             .catch(error => {
                 console.log(error.message)
                 setLoginError(error.message);
+                setLoading(false)
+                
             });
     }
 

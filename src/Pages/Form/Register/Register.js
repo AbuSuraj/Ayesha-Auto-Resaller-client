@@ -14,7 +14,7 @@ const Register = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const { createUser, signInWithGoogle,updateUserProfile,loading } = useContext(AuthContext);
+  const { createUser, signInWithGoogle,updateUserProfile,setLoading,loading } = useContext(AuthContext);
 
   const [signUpError, setSignUPError] = useState("");
   const [createdUserEmail, setCreatedUserEmail] = useState("");
@@ -46,6 +46,7 @@ const Register = () => {
       .catch((error) => {
         console.log(error);
         setSignUPError(error.message);
+        setLoading(false);
       });
   };
    // Google Signin
