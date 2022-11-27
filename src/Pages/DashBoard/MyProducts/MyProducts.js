@@ -2,9 +2,11 @@ import { useQuery } from "@tanstack/react-query";
 import React, { useContext } from "react";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../../Context/AuthProvider";
+import useTitle from "../../../Hooks/useTitle";
 
 const MyProducts = () => {
   const { user } = useContext(AuthContext);
+  useTitle('My products')
   const email = user?.email;
   console.log(email);
   const {

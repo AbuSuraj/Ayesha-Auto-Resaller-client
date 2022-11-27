@@ -1,6 +1,8 @@
 import React from 'react';
+import useTitle from '../../../Hooks/useTitle';
 
 const MyOrder = ({myorder}) => {
+  useTitle('My Orders')
     const {productName, resalePrice, image} = myorder;
     return (
 <div className="card w-96 bg-base-100 shadow-xl">

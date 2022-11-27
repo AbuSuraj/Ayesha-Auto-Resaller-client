@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import Loading from '../../../components/Loading/Loading';
 import { AuthContext } from '../../../Context/AuthProvider';
+import useTitle from '../../../Hooks/useTitle';
 
 const AddCategory = () => {
     const imageHostKey = process.env.REACT_APP_imgbb_key
@@ -11,6 +12,7 @@ const AddCategory = () => {
         handleSubmit,
         formState: { errors },
       } = useForm();
+      useTitle('Add a category')
  const {loading} = useContext(AuthContext)
       const [addProductError, setAddProductError] = useState("");
       const [addedProduct, setAddedProduct] = useState("");

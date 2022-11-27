@@ -5,6 +5,7 @@ import toast from 'react-hot-toast';
 import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
  
 import { AuthContext } from '../../../Context/AuthProvider';
+import useTitle from '../../../Hooks/useTitle';
 
 const AddAProduct = () => {
   const imageHostKey = process.env.REACT_APP_imgbb_key
@@ -14,14 +15,14 @@ const AddAProduct = () => {
         formState: { errors },
       } = useForm();
       const {user, loading} = useContext(AuthContext)
-
+      useTitle('Add a product')
      const navigate = useNavigate();
       // console.log(user.displayName)
       const date = new Date()
       const [addProductError, setAddProductError] = useState("");
       const [addedProduct, setAddedProduct] = useState("");
       const [categories, setCategories] = useState([])
-      
+
      const handleAddProduct = (data) =>{
       const image = data.image[0];
       const formData = new FormData();
