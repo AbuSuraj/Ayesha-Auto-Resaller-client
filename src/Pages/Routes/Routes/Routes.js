@@ -17,6 +17,8 @@ import AddCategory from "../../DashBoard/AddCategory/AddCategory";
 import Products from "../../Home/Categories/Category/Products/Products";
 import PrivateRoutes from "../PrivateRoutes/PrivateRoutes";
 import AdminRoutes from "../AdminRoutes/AdminRoutes";
+import SellerRoutes from "../SellerRoutes/SellerRoutes";
+import BuyerRoutes from "../BuyerRoutes/BuyerRoutes";
 export const routes = createBrowserRouter([
     {
         path:'/',
@@ -57,11 +59,11 @@ export const routes = createBrowserRouter([
         children:[
             {
                 path:'/dashboard',
-                element:<MyOrders></MyOrders>
+                element:<DashBoard></DashBoard>
             },
             {
-                path:'/dashboard/myproducts',
-                element:<MyProducts></MyProducts>
+                path:'/dashboard/myorders',
+                element:<BuyerRoutes><MyOrders></MyOrders></BuyerRoutes>
             },
             {
                 path:'/dashboard/allsellers',
@@ -72,17 +74,24 @@ export const routes = createBrowserRouter([
                 element:<AdminRoutes><AllBuyers></AllBuyers></AdminRoutes>
             },
             {
-                path:'/dashboard/addproduct',
-                element:<AddAProduct></AddAProduct>
-            },
-            {
-                path:'/dashboard/addcategory',
-                element:<AddCategory></AddCategory>
-            },
-            {
                 path:'/dashboard/reporteditem',
                 element:<AdminRoutes><ReportedItems></ReportedItems></AdminRoutes>
             },
+            {
+                path:'/dashboard/addcategory',
+                element:<AdminRoutes><AddCategory></AddCategory></AdminRoutes>
+            },
+            {
+                path:'/dashboard/myproducts',
+                element:<SellerRoutes><MyProducts></MyProducts></SellerRoutes>
+            },
+
+            {
+                path:'/dashboard/addproduct',
+                element:<SellerRoutes><AddAProduct></AddAProduct></SellerRoutes>
+            },
+
+
             
          
         ]

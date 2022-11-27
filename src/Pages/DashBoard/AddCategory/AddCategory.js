@@ -101,7 +101,7 @@ const AddCategory = () => {
             </div>
             <input
               className="btn btn-accent w-full mt-4"
-              value="Add Product"
+              value="Add Category"
               type="submit"
             />
             {addProductError && <p className="text-red-600">{addProductError}</p>}

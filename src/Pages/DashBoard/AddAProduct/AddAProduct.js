@@ -3,7 +3,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
-import Loading from '../../../components/Loading/Loading';
+ 
 import { AuthContext } from '../../../Context/AuthProvider';
 
 const AddAProduct = () => {
@@ -14,7 +14,7 @@ const AddAProduct = () => {
         formState: { errors },
       } = useForm();
       const {user, loading} = useContext(AuthContext)
-     const nLocation = useLocation()
+
      const navigate = useNavigate();
       // console.log(user.displayName)
       const date = new Date()

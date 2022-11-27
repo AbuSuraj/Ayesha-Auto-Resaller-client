@@ -22,8 +22,13 @@ const Products = () => {
     }
     console.log(products)
     return (
-        <div>
-           <div className='grid gap-6 ml-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 my-10'>
+        <div>  
+
+         {
+               products.length === 0 ? <><h1 className='text-center font-bold'>No car Available for this category</h1></> 
+               : 
+               <>
+               <div className='grid gap-6 ml-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 my-10'>
              {
                 products.map(product =><Product
                 key={product._id}
@@ -31,6 +36,21 @@ const Products = () => {
                 ></Product>)
              }
            </div>
+               </>
+         }
+            {/* {
+                products.length ? === 0 "No car Available for this category": <>
+                  <div className='grid gap-6 ml-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 my-10'>
+             {
+                products.map(product =><Product
+                key={product._id}
+                product = {product}
+                ></Product>)
+             }
+           </div>
+                </>
+            }
+          */}
         </div>
     );
 };
