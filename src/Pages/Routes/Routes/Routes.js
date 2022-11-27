@@ -15,6 +15,8 @@ import ReportedItems from "../../DashBoard/ReportedItems/ReportedItems";
 import AddAProduct from "../../DashBoard/AddAProduct/AddAProduct";
 import AddCategory from "../../DashBoard/AddCategory/AddCategory";
 import Products from "../../Home/Categories/Category/Products/Products";
+import PrivateRoutes from "../PrivateRoutes/PrivateRoutes";
+import AdminRoutes from "../AdminRoutes/AdminRoutes";
 export const routes = createBrowserRouter([
     {
         path:'/',
@@ -50,7 +52,7 @@ export const routes = createBrowserRouter([
     },
     {
         path:'/dashboard',
-        element:<DashBoardLayout></DashBoardLayout>,
+        element:<PrivateRoutes><DashBoardLayout></DashBoardLayout></PrivateRoutes>,
         errorElement:<ErrorPage></ErrorPage>,
         children:[
             {
@@ -63,11 +65,11 @@ export const routes = createBrowserRouter([
             },
             {
                 path:'/dashboard/allsellers',
-                element:<AllSellers></AllSellers>
+                element:<AdminRoutes><AllSellers></AllSellers></AdminRoutes>
             },
             {
                 path:'/dashboard/allbuyers',
-                element:<AllBuyers></AllBuyers>
+                element:<AdminRoutes><AllBuyers></AllBuyers></AdminRoutes>
             },
             {
                 path:'/dashboard/addproduct',
@@ -79,7 +81,7 @@ export const routes = createBrowserRouter([
             },
             {
                 path:'/dashboard/reporteditem',
-                element:<ReportedItems></ReportedItems>
+                element:<AdminRoutes><ReportedItems></ReportedItems></AdminRoutes>
             },
             
          

@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link, Outlet } from 'react-router-dom';
+import { AuthContext } from '../Context/AuthProvider';
+import useAdmin from '../Hooks/useAdmin';
 import useTitle from '../Hooks/useTitle';
 import Footer from '../Pages/SharedPages/Footer/Footer';
 import Header from "../Pages/SharedPages/Header/Header"
 const DashBoardLayout = () => {
-    useTitle("DashBoard")
+    useTitle("DashBoard");
+    const {user} = useContext(AuthContext)
+    const [isAdmin] = useAdmin(user?.email)
     return (
         <div>
             <Header></Header>
@@ -20,16 +24,14 @@ const DashBoardLayout = () => {
                         <li className='my-1'><Link to="/dashboard/addproduct">Add a product</Link></li>
                         <li className='my-1'><Link to="/dashboard/addcategory">Add a category</Link></li>
                         <li className='my-1'><Link to="/dashboard/myproducts">My Products</Link></li>
-                        <li className='my-1'><Link to="/dashboard/allsellers">All Sellers</Link></li>
+
+                        {
+                            isAdmin && <>
+                         <li className='my-1'><Link to="/dashboard/allsellers">All Sellers</Link></li>
                         <li className='my-1'><Link to="/dashboard/allbuyers">All Buyers</Link></li>
                         <li className='my-1'><Link to="/dashboard/reporteditem">Reported Item</Link></li>
-                        {/* {
-                            isAdmin && <>
-                                <li><Link to="/dashboard/allusers">All users</Link></li>
-                                <li><Link to="/dashboard/adddoctor">Add A Doctor</Link></li>
-                                <li><Link to="/dashboard/managedoctors">Manage Doctors</Link></li>
                             </>
-                        } */}
+                        }
 
                     </ul>
 
