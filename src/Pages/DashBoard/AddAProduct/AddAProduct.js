@@ -47,7 +47,8 @@ const AddAProduct = () => {
                   image: imgData.data.url,
                   createdDate: date,
                   seller: user.displayName,
-                  email: user.email
+                  email: user.email,
+                  isAdvertised:'false'
                 }
                 console.log(product);
                 // added product into db

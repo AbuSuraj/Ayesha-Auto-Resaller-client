@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import React, { useContext } from "react";
+import Swal from "sweetalert2";
 import { AuthContext } from "../../../Context/AuthProvider";
 
 const MyProducts = () => {
@@ -20,12 +21,33 @@ const MyProducts = () => {
       return data;
     },
   });
+
+const handleAdvertise = id =>{
+  console.log(id)
+  fetch(`http://localhost:5000/products/advertise/${id}`,{
+    method: 'PATCH',
+    headers: {
+        'content-type':'application/json'
+    },
+    // body: JSON.stringify( )
+})
+.then(res => res.json())
+.then(data =>{
+    if(data.modifiedCount > 0){
+        Swal.fire("Added to the advertisement card successfully");
+        refetch();
+   
+   }
+})
+}
+
   if (isLoading) {
     return (
       <div className=" my-5 mx-auto w-16 h-16 border-4 border-dashed rounded-full animate-spin dark:border-violet-400"></div>
     );
   }
   console.log(myProducts);
+
   return (
     <div className="mx-4">
       <h2 className="text-3xl my-5 text-center">
@@ -61,12 +83,25 @@ const MyProducts = () => {
                   </select>
                 </td>
                 <td>
-                  <button
-                    // onClick={() => handleDelete(seller._id)}
-                    className="btn btn-xs btn-error"
+{            myProduct.isAdvertised ==='false' ?
+                    <button
+                    onClick={() => handleAdvertise(myProduct._id)}
+                    
+                    className={`btn btn-xs btn-secondary `}
                   >
                     Advertise
                   </button>
+                  :
+                  <>
+                                     <button
+                    onClick={() => handleAdvertise(myProduct._id)}
+                    disabled
+                    className={`btn btn-xs btn-secondary `}
+                  >
+                    Advertise
+                  </button></>
+                  
+}
                 </td>
               </tr>
             ))}
