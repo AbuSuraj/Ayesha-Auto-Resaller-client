@@ -4,6 +4,7 @@ import { AuthContext } from '../../../Context/AuthProvider';
 import useTitle from '../../../Hooks/useTitle';
 import Banner from '../Banner/Banner';
 import Categories from '../Categories/Categories';
+import FAQ from '../FAQ/FAQ';
 
 const Home = () => {
   const {loading} = useContext(AuthContext)
@@ -15,6 +16,7 @@ const Home = () => {
         <div>
           <Banner></Banner> 
           <Categories></Categories> 
+          <FAQ></FAQ>
         </div>
     );
 };
