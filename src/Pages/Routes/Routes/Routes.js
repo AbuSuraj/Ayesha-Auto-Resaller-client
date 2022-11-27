@@ -19,6 +19,7 @@ import PrivateRoutes from "../PrivateRoutes/PrivateRoutes";
 import AdminRoutes from "../AdminRoutes/AdminRoutes";
 import SellerRoutes from "../SellerRoutes/SellerRoutes";
 import BuyerRoutes from "../BuyerRoutes/BuyerRoutes";
+import Payment from "../../DashBoard/Payment/Payment";
 export const routes = createBrowserRouter([
     {
         path:'/',
@@ -89,6 +90,11 @@ export const routes = createBrowserRouter([
             {
                 path:'/dashboard/addproduct',
                 element:<SellerRoutes><AddAProduct></AddAProduct></SellerRoutes>
+            },
+            {
+                path: '/dashboard/payment/:id',
+                element: <Payment></Payment>,
+                loader: ({params}) => fetch(`http://localhost:5000/bookings/${params.id}`)
             },
 
 

@@ -50,7 +50,8 @@ const AddAProduct = () => {
                   createdDate: date,
                   seller: user.displayName,
                   email: user.email,
-                  isAdvertised:'false'
+                  isAdvertised:'false',
+                  isPayment:false
                 }
                 console.log(product);
                 // added product into db

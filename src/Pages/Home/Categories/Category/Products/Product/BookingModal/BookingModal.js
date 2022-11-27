@@ -24,7 +24,7 @@ const BookingModal = ({product, setBook}) => {
             name,
             email,
             phone,
-            meetingLocation, image,resalePrice
+            meetingLocation, image,resalePrice, product_id:_id
         }
         setBook(booking)
 console.log(booking)

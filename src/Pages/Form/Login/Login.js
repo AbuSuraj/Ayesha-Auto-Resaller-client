@@ -19,7 +19,8 @@ const Login = () => {
 
     const from = location.state?.from?.pathname || '/';
     if (token) {
-        navigate(from, { replace: true });
+        navigate('/');
+        // navigate(from, { replace: true });
     }
     const handleLogin = data => {
         console.log(data);
@@ -29,6 +30,7 @@ const Login = () => {
                 const user = result.user;
                 console.log(user);
                 setLoginUserEmail(data.email);
+                // navigate(from, { replace: true });
             })
             .catch(error => {
                 console.log(error.message)

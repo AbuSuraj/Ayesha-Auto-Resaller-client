@@ -95,11 +95,11 @@ const handleAdvertise = id =>{
                   :
                   <>
                                      <button
-                    onClick={() => handleAdvertise(myProduct._id)}
-                    disabled
-                    className={`btn btn-xs btn-secondary `}
+                   
+                    
+                    className={' btn btn-xs btn-accent' }
                   >
-                    Advertise
+                    Advertised
                   </button></>
                   
 }
