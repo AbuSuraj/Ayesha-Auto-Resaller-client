@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import BookingModal from './BookingModal/BookingModal';
 import { FaCheck, FaRegCheckCircle } from 'react-icons/fa';
 import { useQuery } from '@tanstack/react-query';
+import toast from 'react-hot-toast';
  
 const Product = ({product}) => {
   const {_id,productName,condition,originalPrice,resalePrice,location,mobile,productDescription,purchaseYear,createdDate,image, seller, email} = product;
@@ -24,7 +25,29 @@ const Product = ({product}) => {
      return data;
    },
  });
- 
+
+ const handleReport = (product) =>{
+console.log(product);
+
+const reportedItem = {product_id:_id,productName,condition,originalPrice,resalePrice,location,mobile,productDescription,purchaseYear,createdDate,image, seller, email}
+fetch('http://localhost:5000/report', {
+   method: 'POST',
+   headers: {
+       'content-type': 'application/json',
+   },
+   body: JSON.stringify(reportedItem)
+})
+.then(res => res.json())
+.then(data => {
+    console.log(data)
+    if(data.acknowledged){
+        toast.success('Report sent to admin')
+       
+        // form.reset();  
+    }
+})
+.catch(er => console.error(er));
+ }
     return (
 <div className="card w-96 bg-base-100 shadow-xl">
   <figure><img className='w-full  h-[250px]' src={image} alt="car" /></figure>
@@ -57,6 +80,7 @@ const Product = ({product}) => {
        <label 
        onClick={() =>setBook(product)}
        htmlFor="booking-modal" className="btn">Book Now</label> 
+       <button onClick={()=>handleReport(product)} className="btn btn-warning">Report this item</button>
       </div>
      {
      book &&

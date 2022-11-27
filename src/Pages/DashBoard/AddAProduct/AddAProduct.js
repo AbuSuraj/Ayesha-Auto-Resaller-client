@@ -21,6 +21,7 @@ const AddAProduct = () => {
       const [addProductError, setAddProductError] = useState("");
       const [addedProduct, setAddedProduct] = useState("");
       const [categories, setCategories] = useState([])
+      
      const handleAddProduct = (data) =>{
       const image = data.image[0];
       const formData = new FormData();
