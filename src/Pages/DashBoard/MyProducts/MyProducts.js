@@ -23,6 +23,7 @@ const MyProducts = () => {
       return data;
     },
   });
+  
 
 const handleAdvertise = id =>{
   console.log(id)
@@ -86,7 +87,7 @@ const handleDeleteProduct = (id) =>{
               <th></th>
               <th>Name</th>
               <th>Price</th>
-              <th>Action</th>
+              <th>Status</th>
               <th>Action</th>
               <th>Delete</th>
             </tr>
@@ -98,19 +99,21 @@ const handleDeleteProduct = (id) =>{
                 <td>{myProduct.productName}</td>
                 <td>{myProduct.resalePrice}</td>
                 {/* <td>{ user?.role !== 'admin' && <button onClick={() => handleMakeAdmin(user._id)} className='btn btn-xs btn-primary'>Make Admin</button>}</td> */}
-
+                 {/* {console.log(myProduct)} */}
                 <td>
-                  <select className="select select-primary max-w-xs">
+                 {
+                  myProduct.isPaid ? <p>Sold</p>:<p>Available</p>
+                 }
+                  {/* <select className="select select-primary max-w-xs">
                     <option >
                       Available
                     </option>
                     <option>Sold</option>
-                     
-                    
-                  </select>
+                  </select> */}
                 </td>
                 <td>
-{            myProduct.isAdvertised ==='false' ?
+                  { myProduct.isPaid ? "No Action need" : <>
+                  {            myProduct.isAdvertised ==='false' ?
                     <button
                     onClick={() => handleAdvertise(myProduct._id)}
                     
@@ -129,6 +132,8 @@ const handleDeleteProduct = (id) =>{
                   </button></>
                   
 }
+                  </>}
+
                 </td>
                 <td>
                   <button onClick={()=>handleDeleteProduct(myProduct._id)} className="btn btn-sm">Delete</button>
