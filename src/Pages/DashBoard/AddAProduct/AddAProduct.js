@@ -51,7 +51,7 @@ const AddAProduct = () => {
                   seller: user.displayName,
                   email: user.email,
                   isAdvertised:'false',
-                  isPayment:false
+                  isPaid:false
                 }
                 console.log(product);
                 // added product into db
