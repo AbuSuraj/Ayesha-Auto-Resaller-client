@@ -169,6 +169,7 @@ if(loading){
                 <span className="label-text text-white">Category</span>
               </label>
               <select className="select select-bordered w-full max-w-xs" {...register("category")}>
+              <option selected disabled value="select category">Select category</option>
                 {
                   categories.map(category => <option key={category._id}
                     
