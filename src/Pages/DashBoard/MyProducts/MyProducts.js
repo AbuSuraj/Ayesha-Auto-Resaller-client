@@ -17,7 +17,11 @@ const MyProducts = () => {
     queryKey: ["myproducts"],
     queryFn: async () => {
       const res = await fetch(
-        `http://localhost:5000/myproducts/seller/${email}`
+        `https://ayeshaauto.vercel.app/myproducts/seller/${email}`,
+ {       headers: {
+          'content-type': 'application/json',
+          authorization: `bearer ${localStorage.getItem('accessToken')}`
+      },}
       );
       const data = await res.json();
       return data;
@@ -27,10 +31,12 @@ const MyProducts = () => {
 
 const handleAdvertise = id =>{
   console.log(id)
-  fetch(`http://localhost:5000/products/advertise/${id}`,{
+  fetch(`https://ayeshaauto.vercel.app/products/advertise/${id}`,{
     method: 'PATCH',
     headers: {
-        'content-type':'application/json'
+        'content-type':'application/json',
+        
+        authorization: `bearer ${localStorage.getItem('accessToken')}`
     },
     // body: JSON.stringify( )
 })
@@ -54,8 +60,12 @@ const handleDeleteProduct = (id) =>{
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/product/${id}`, {
+        fetch(`https://ayeshaauto.vercel.app/product/${id}`, {
           method: "DELETE",
+          headers: {
+            'content-type': 'application/json',
+            authorization: `bearer ${localStorage.getItem('accessToken')}`
+        },
         })
           .then((res) => res.json())
           .then((data) => {
@@ -112,7 +122,8 @@ const handleDeleteProduct = (id) =>{
                   </select> */}
                 </td>
                 <td>
-                  { myProduct.isPaid ? "No Action need" : <>
+                  { myProduct.isPaid ? "No Action need" :
+                   <>
                   {            myProduct.isAdvertised ==='false' ?
                     <button
                     onClick={() => handleAdvertise(myProduct._id)}
@@ -124,8 +135,7 @@ const handleDeleteProduct = (id) =>{
                   :
                   <>
                                      <button
-                   
-                    
+                     
                     className={' btn btn-xs btn-accent' }
                   >
                     Advertised

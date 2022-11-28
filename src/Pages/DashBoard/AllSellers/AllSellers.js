@@ -12,7 +12,12 @@ useTitle('Sellers')
   } = useQuery({
     queryKey: ["sellers"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/sellers");
+      const res = await fetch("https://ayeshaauto.vercel.app/sellers",
+  {    headers: {
+        'content-type': 'application/json',
+        authorization: `bearer ${localStorage.getItem('accessToken')}`
+    },}
+      );
       const data = await res.json();
       return data;
     },
@@ -29,8 +34,12 @@ useTitle('Sellers')
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/seller/${id}`, {
+        fetch(`https://ayeshaauto.vercel.app/seller/${id}`, {
           method: "DELETE",
+          headers: {
+            'content-type': 'application/json',
+            authorization: `bearer ${localStorage.getItem('accessToken')}`
+        },
         })
           .then((res) => res.json())
           .then((data) => {
@@ -46,7 +55,7 @@ useTitle('Sellers')
   // verify seller
   const handleVerify = (id) => {
     Swal.fire({
-      title: "Are you sure?",
+      title: "Are you sure to verify this seller?",
       text: "You won't be able to revert this!",
       icon: "warning",
       showCancelButton: true,
@@ -55,10 +64,13 @@ useTitle('Sellers')
       confirmButtonText: "Yes, verify it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/verifySeller/${id}`,{
+        fetch(`https://ayeshaauto.vercel.app/verifySeller/${id}`,{
           method: 'PATCH',
+          
           headers: {
-              'content-type':'application/json'
+              'content-type':'application/json',
+              
+              authorization: `bearer ${localStorage.getItem('accessToken')}`
           },
           // body: JSON.stringify( )
       })
@@ -93,7 +105,7 @@ useTitle('Sellers')
               <th>Name</th>
               <th>Email</th>
               <th>Delete</th>
-              <th>Verify</th>
+              <th>Verifcation Status</th>
             </tr>
           </thead>
           <tbody>
@@ -113,7 +125,7 @@ useTitle('Sellers')
                 </td>
                 <td>
 {
-            seller.verify ? <button className="btn btn-xs" disabled>Verified</button> :
+            seller.verify ? <button className="btn btn-xs btn-info" >Verified</button> :
             <button
                     onClick={() => handleVerify(seller._id)}
                     className="btn btn-xs btn-secondary"

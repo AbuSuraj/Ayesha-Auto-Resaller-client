@@ -12,7 +12,12 @@ const AllBuyers = () => {
       } = useQuery({
         queryKey: ["buyers"],
         queryFn: async () => {
-          const res = await fetch("http://localhost:5000/buyers");
+          const res = await fetch("https://ayeshaauto.vercel.app/buyers",
+          {    headers: {
+            'content-type': 'application/json',
+            authorization: `bearer ${localStorage.getItem('accessToken')}`
+        },}
+          );
           const data = await res.json();
           return data;
         },
@@ -29,8 +34,12 @@ const AllBuyers = () => {
           confirmButtonText: "Yes, delete it!",
         }).then((result) => {
           if (result.isConfirmed) {
-            fetch(`http://localhost:5000/buyer/${id}`, {
+            fetch(`https://ayeshaauto.vercel.app/buyer/${id}`, {
               method: "DELETE",
+              headers: {
+                'content-type': 'application/json',
+                authorization: `bearer ${localStorage.getItem('accessToken')}`
+            },
             })
               .then((res) => res.json())
               .then((data) => {

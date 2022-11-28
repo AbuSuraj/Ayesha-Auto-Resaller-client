@@ -10,7 +10,7 @@ const AdvertismentItems = () => {
   } = useQuery({
     queryKey: ["advertisementItem"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/advertisementItem");
+      const res = await fetch("https://ayeshaauto.vercel.app/advertisementItem");
       const data = await res.json();
       return data;
     },

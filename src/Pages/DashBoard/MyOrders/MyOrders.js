@@ -16,7 +16,13 @@ const MyOrders = () => {
       queryKey: ["myorders"],
       queryFn: async () => {
         const res = await fetch(
-          `http://localhost:5000/myorders/buyer/${email}`
+          `https://ayeshaauto.vercel.app/myorders/buyer/${email}`,
+          {
+            headers: {
+              'content-type': 'application/json',
+              authorization: `bearer ${localStorage.getItem('accessToken')}`
+          },
+          }
         );
         const data = await res.json();
         return data;

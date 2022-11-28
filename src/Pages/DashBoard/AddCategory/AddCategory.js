@@ -35,10 +35,11 @@ const AddCategory = () => {
                     image: imgData.data.url
                 }
                 console.log(category);
-                fetch('http://localhost:5000/addcategory', {
+                fetch('https://ayeshaauto.vercel.app/addcategory', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json',
+                        authorization: `bearer ${localStorage.getItem('accessToken')}`
                     },
                     body: JSON.stringify(category)
                 })

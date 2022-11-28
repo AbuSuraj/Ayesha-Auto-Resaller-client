@@ -12,7 +12,7 @@ const ReportedItems = () => {
       } = useQuery({
         queryKey: ["report"],
         queryFn: async () => {
-          const res = await fetch("http://localhost:5000/report");
+          const res = await fetch("https://ayeshaauto.vercel.app/report");
           const data = await res.json();
           return data;
         },
@@ -30,8 +30,12 @@ const ReportedItems = () => {
           confirmButtonText: "Yes, delete it!",
         }).then((result) => {
           if (result.isConfirmed) {
-            fetch(`http://localhost:5000/report/${itemId}`, {
+            fetch(`https://ayeshaauto.vercel.app/report/${itemId}`, {
               method: "DELETE",
+              headers: {
+                'content-type': 'application/json',
+                authorization: `bearer ${localStorage.getItem('accessToken')}`
+            },
             })
               .then((res) => res.json())
               .then((data) => {
@@ -41,8 +45,12 @@ const ReportedItems = () => {
                 } 
               });
             //   deleting reported item 
-              fetch(`http://localhost:5000/reportedItem/${itemId}`, {
+              fetch(`https://ayeshaauto.vercel.app/reportedItem/${itemId}`, {
                 method: "DELETE",
+                headers: {
+                  'content-type': 'application/json',
+                  authorization: `bearer ${localStorage.getItem('accessToken')}`
+              },
               })
               .then((res) => res.json())
               .then((data) => {

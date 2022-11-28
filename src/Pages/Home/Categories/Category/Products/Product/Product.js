@@ -22,20 +22,28 @@ const Product = ({product}) => {
  } = useQuery({
    queryKey: ["sellers"],
    queryFn: async () => {
-     const res = await fetch("http://localhost:5000/sellers");
+     const res = await fetch("https://ayeshaauto.vercel.app/sellers",
+     {    headers: {
+      'content-type': 'application/json',
+      authorization: `bearer ${localStorage.getItem('accessToken')}`
+  },});
      const data = await res.json();
      return data;
    },
  });
 
+ if(isLoading){
+  return  <div className=" my-5 mx-auto w-16 h-16 border-4 border-dashed rounded-full animate-spin dark:border-violet-400"></div> 
+}
  const handleReport = (product) =>{
 console.log(product);
 
 const reportedItem = {product_id:_id,productName,condition,originalPrice,resalePrice,location,mobile,productDescription,purchaseYear,createdDate,image, seller, email}
-fetch('http://localhost:5000/report', {
+fetch('https://ayeshaauto.vercel.app/report', {
    method: 'POST',
    headers: {
        'content-type': 'application/json',
+       authorization: `bearer ${localStorage.getItem('accessToken')}`
    },
    body: JSON.stringify(reportedItem)
 })
@@ -56,14 +64,14 @@ fetch('http://localhost:5000/report', {
 }
     return (
 <div className="card w-96 bg-base-100 shadow-xl">
-  <figure><img className='w-full  h-[250px]' src={image} alt="car" /></figure>
+  <figure><img className='w-full h-[250px]' src={image} alt="car" /></figure>
   <div className="card-body">
     <h2 className="card-title">{productName}
     <div className="badge badge-secondary">{condition}</div>
     </h2>
      <div className='h-[300px]'>
-        <p>Original Price: <span className='font-bold'>{originalPrice} BDT</span></p>
-        <p>Resale Price: <span className='font-bold'>{resalePrice} BDT</span></p>
+        <p>Original Price: <span className='font-bold'>${originalPrice}</span></p>
+        <p>Resale Price: <span className='font-bold'>${resalePrice}</span></p>
    
         <p>Location: <span className='font-bold'>{location}</span></p>
         <p>Contact Number: <span className='font-bold'>{mobile}</span></p>
@@ -73,7 +81,7 @@ fetch('http://localhost:5000/report', {
         <p className='flex items-center '><span><span className='font-bold'> Seller Name: </span> 
         {seller}</span>
         <span className='text-green-600 ml-2 text-2xl'>
-         {sellers.map(sllr =><span key={sllr._id}
+         {sellers?.map(sllr =><span key={sllr._id}
          >
           {console.log(sllr)} {(sllr.email ===email && sllr.verify) ? <FaRegCheckCircle></FaRegCheckCircle>: ''} 
          </span>

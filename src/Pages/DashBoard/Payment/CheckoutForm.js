@@ -7,14 +7,14 @@ const CheckoutForm = ({ booking }) => {
     const [processing, setProcessing] = useState(false);
     const [transactionId, setTransactionId] = useState('');
     const [clientSecret, setClientSecret] = useState("");
-
+      const [paymentstatus, setPaymentstatus] = useState(false)
     const stripe = useStripe();
     const elements = useElements();
-    const { resalePrice, email, name, _id,product_id } = booking;
+    const { resalePrice, email, name, _id,product_id,paid } = booking;
 
     useEffect(() => {
         // Create PaymentIntent as soon as the page loads
-        fetch("http://localhost:5000/create-payment-intent", {
+        fetch("https://ayeshaauto.vercel.app/create-payment-intent", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -52,6 +52,7 @@ const CheckoutForm = ({ booking }) => {
         }
         setSuccess('');
         setProcessing(true);
+        
         const { paymentIntent, error: confirmError } = await stripe.confirmCardPayment(
             clientSecret,
             {
@@ -79,7 +80,7 @@ const CheckoutForm = ({ booking }) => {
                 bookingId: _id,
                 product_id: product_id
             }
-            fetch('http://localhost:5000/payments', {
+            fetch('https://ayeshaauto.vercel.app/payments', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json',
@@ -95,6 +96,7 @@ const CheckoutForm = ({ booking }) => {
                         setTransactionId(paymentIntent.id);
                     }
                 })
+                setPaymentstatus(true)
         }
         setProcessing(false);
 
@@ -120,12 +122,15 @@ const CheckoutForm = ({ booking }) => {
                         },
                     }}
                 />
-                <button
+{
+            paymentstatus ? <button className='btn btn-sm mt-4 btn-info'>Paid</button>:
+               <button
                     className='btn btn-sm mt-4 btn-primary'
                     type="submit"
                     disabled={!stripe || !clientSecret || processing}>
                     Pay
                 </button>
+        }
             </form>
             <p className="text-red-500">{cardError}</p>
             {

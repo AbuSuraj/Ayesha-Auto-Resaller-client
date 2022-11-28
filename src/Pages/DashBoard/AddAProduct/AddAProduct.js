@@ -55,10 +55,11 @@ const AddAProduct = () => {
                 }
                 console.log(product);
                 // added product into db
-                fetch('http://localhost:5000/addproduct', {
+                fetch('https://ayeshaauto.vercel.app/addproduct', {
                   method: 'POST',
                   headers: {
                       'content-type': 'application/json',
+                      authorization: `bearer ${localStorage.getItem('accessToken')}`
                   },
                   body: JSON.stringify(product)
               })
@@ -80,7 +81,7 @@ const AddAProduct = () => {
      }
     //  fetching categories
 useEffect(()=>{
-  axios.get('http://localhost:5000/categories')
+  axios.get('https://ayeshaauto.vercel.app/categories')
   .then((data) =>{
     console.log(data);
     setCategories(data.data);

@@ -6,8 +6,8 @@ const BookingModal = ({product, setBook}) => {
     const {_id,productName,condition,originalPrice,resalePrice,location,mobile,productDescription,purchaseYear,createdDate,image, seller} = product;
     const {user,loading} = useContext(AuthContext);
     
-    const name = user.displayName;
-    const email = user.email;
+    const name = user?.displayName;
+    const email = user?.email;
     console.log(name,email)
     const handleBooking = event => {
         event.preventDefault();
@@ -31,10 +31,11 @@ console.log(booking)
         // TODO: send data to the server
         // and once data is saved then close the modal 
         // and display success toast
-        fetch('http://localhost:5000/bookings', {
+        fetch('https://ayeshaauto.vercel.app/bookings', {
             method: 'POST',
             headers: {
-                'content-type': 'application/json'
+                'content-type': 'application/json',
+                authorization: `bearer ${localStorage.getItem('accessToken')}`
             },
             body: JSON.stringify(booking)
         })
