@@ -1,5 +1,8 @@
  # Ayesha Auto Reseller
 ## Admin credentials
+
+# Note:
+<li>Please Turn off your add blocker</li>
 <li>adminEmail:<jangkar@mahbub.com> </li>
 <li>adminPassword:<@bSuraj123></li>
 ## Project Description

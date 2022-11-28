@@ -1,10 +1,11 @@
 import { format } from 'date-fns';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import BookingModal from './BookingModal/BookingModal';
 import { FaCheck, FaRegCheckCircle } from 'react-icons/fa';
 import { useQuery } from '@tanstack/react-query';
 import toast from 'react-hot-toast';
 import useTitle from '../../../../../../Hooks/useTitle';
+import { AuthContext } from '../../../../../../Context/AuthProvider';
  
 const Product = ({product}) => {
   const {_id,productName,condition,originalPrice,resalePrice,location,mobile,productDescription,purchaseYear,createdDate,image, seller, email} = product;
@@ -14,6 +15,7 @@ const Product = ({product}) => {
   const pYear = parseInt(purchaseYear)
   const usedYear = year - pYear;
  console.log(email);
+ const {loading} = useContext(AuthContext)
  useTitle('category wise car')
  const {
    data: sellers = [],
@@ -32,7 +34,7 @@ const Product = ({product}) => {
    },
  });
 
- if(isLoading){
+ if(isLoading && loading){
   return  <div className=" my-5 mx-auto w-16 h-16 border-4 border-dashed rounded-full animate-spin dark:border-violet-400"></div> 
 }
  const handleReport = (product) =>{
