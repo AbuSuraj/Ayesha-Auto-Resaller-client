@@ -1,16 +1,15 @@
  # Ayesha Auto Reseller
-## Admin credentials
-
-# Note:
-<li>Please Turn off your add blocker</li>
+ ## Admin credentials
 <li>adminEmail:<jangkar@mahbub.com> </li>
 <li>adminPassword:<@bSuraj123></li>
+<li>Please Turn off your add blocker</li>
+
 ## Project Description
 <li>A simple Resale Car website made with using MERN Stack technology</li>
 <li>To sign up there is a option for account type- buyer and seller. By default and google sign up is considered as buyer</li>
 <li>Navbar have some routes, among them  Dashboard is private, others public routes are home, Blog, Sign In, and Sign Up</li> 
-<li>Dashboard manue is changed in accordance with account type.</li>
-<li>"My Order" manue is for Buyer, "Add a product", "My Product" are for seller, and "All seller", "all Buyer", "add a category", and "Reported Item" are for admin.
+<li>Dashboard menu is changed in accordance with account type.</li>
+<li>"My Order" menu is for Buyer, "Add a product", "My Product" are for seller, and "All seller", "all Buyer", "add a category", and "Reported Item" are for admin.
 <li>Home page have a few section such as banner, Cars cateogry, FAQ, and Advertisement</li> 
 <li>Categories are  shown on the home page, moreover, if user click "See All Cars" then one  can see available all cars for this category</li> 
 <li>In category wise car page, there are details information for the available cars. Additionally, if the seller is verified then there is verified icon next to the sellers name.</li> 
@@ -29,8 +28,9 @@
 ## Project live site link:
   
 <li>
-This project hosted in firebase.
+This project hosted in firebase. <br/>
  Live site link-1: https://asyesha-auto-reseller.web.app/
+
  Live site link-2: https://asyesha-auto-reseller.firebaseapp.com/
 
 </li>
@@ -48,6 +48,7 @@ This project hosted in firebase.
 <li>React Hook form: https://react-hook-form.com/get-started/</li>
 <li>React Query  https://tanstack.com/query/v4/docs/quick-start</li>
 <li>date-fns: https://www.npmjs.com/package/date-fns/</li>
+<li>Stripe: https://stripe.com/docs</li>
 
  
 

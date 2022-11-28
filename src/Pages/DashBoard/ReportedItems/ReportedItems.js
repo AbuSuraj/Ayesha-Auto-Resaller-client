@@ -1,10 +1,13 @@
 import { useQuery } from '@tanstack/react-query';
-import React from 'react';
+import React, { useContext } from 'react';
 import Swal from 'sweetalert2';
+import { AuthContext } from '../../../Context/AuthProvider';
 import useTitle from '../../../Hooks/useTitle';
 
 const ReportedItems = () => {
-    useTitle('Reported Items')
+  const {loading} = useContext(AuthContext)
+    useTitle('Reported Items');
+    
     const {
         data: reportedItems = [],
         refetch,
@@ -65,7 +68,7 @@ const ReportedItems = () => {
         });
       };
 
-      if (isLoading) {
+      if (isLoading && loading) {
         return (
           <div className=" my-5 mx-auto w-16 h-16 border-4 border-dashed rounded-full animate-spin dark:border-violet-400"></div>
         );
