@@ -42,6 +42,31 @@ const handleAdvertise = id =>{
 })
 }
 
+const handleDeleteProduct = (id) =>{
+   Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:5000/product/${id}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            /// deletedCount // dont forget this spelling
+            if (data?.deletedCount > 0) {
+              refetch();
+            }
+          });
+        Swal.fire("Deleted!", "Your file has been deleted.", "success");
+      }
+    });
+}
   if (isLoading) {
     return (
       <div className=" my-5 mx-auto w-16 h-16 border-4 border-dashed rounded-full animate-spin dark:border-violet-400"></div>
@@ -63,6 +88,7 @@ const handleAdvertise = id =>{
               <th>Price</th>
               <th>Action</th>
               <th>Action</th>
+              <th>Delete</th>
             </tr>
           </thead>
           <tbody>
@@ -103,6 +129,9 @@ const handleAdvertise = id =>{
                   </button></>
                   
 }
+                </td>
+                <td>
+                  <button onClick={()=>handleDeleteProduct(myProduct._id)} className="btn btn-sm">Delete</button>
                 </td>
               </tr>
             ))}

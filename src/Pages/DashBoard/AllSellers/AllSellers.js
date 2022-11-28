@@ -43,6 +43,7 @@ useTitle('Sellers')
       }
     });
   };
+  // verify seller
   const handleVerify = (id) => {
     Swal.fire({
       title: "Are you sure?",
