@@ -147,7 +147,7 @@ const Register = () => {
             <select className="select select-bordered w-full max-w-xs" {...register("accountType")}>
                 <option disabled value="Select account type">Select account type</option>
              
-              <option value="buyer">buyer</option>
+              <option selected value="buyer">buyer</option>
               <option value="seller">seller</option>
             </select>
           </div>
