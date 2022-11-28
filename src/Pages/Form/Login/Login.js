@@ -19,8 +19,8 @@ const Login = () => {
 
     const from = location.state?.from?.pathname || '/';
     if (token) {
-        navigate('/');
-        // navigate(from, { replace: true });
+        // navigate('/');
+        navigate(from, { replace: true });
     }
     const handleLogin = data => {
         console.log(data);
@@ -46,7 +46,7 @@ const Login = () => {
           toast.success("Login Success!");
           console.log(result.user.email);
           setLoginUserEmail(result.user.email);
-        //   navigate(from, { replace: true });
+          navigate(from, { replace: true });
         });
       };
       console.log(loginUserEmail);
