@@ -1,8 +1,8 @@
 import React from 'react';
- import img1 from '../../../Assests/Images/banner1.jfif'
- import img2 from '../../../Assests/Images/banner-3.jfif'
- import img3 from '../../../Assests/Images/banner-4.jfif'
- import img4 from '../../../Assests/Images/bmw-1.jpg'
+ import img1 from '../../../Assests/Images/banner3.jpg'
+ import img2 from '../../../Assests/Images/banner2.jpg'
+ import img3 from '../../../Assests/Images/banner1.jpg'
+ import img4 from '../../../Assests/Images/banner4.jpg'
  import img5 from '../../../Assests/Images/banner-2.jpg'
 import BannerItem from './BannerItem';
 
@@ -50,7 +50,7 @@ const bannerData = [
 ]
 const Banner = () => {
     return (
-        <div className="carousel w-3/4 h-1/2 mx-auto py-10">
+        <div className="carousel w-1/2 h-1/2 mx-auto py-10">
         {
             bannerData.map(slide => <BannerItem
                 key={slide.id}
