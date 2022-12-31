@@ -28,7 +28,7 @@ const Header = () => {
   {/* <li><Link to="/login">Sign In</Link></li> */}
   
   {user?.uid ?
-      <>
+      <> 
           <li><NavLink style={({ isActive }) =>
               isActive ? activeStyle : undefined
             }  to="/dashboard">Dashboard</NavLink></li>
