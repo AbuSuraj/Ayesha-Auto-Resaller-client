@@ -1,6 +1,6 @@
  # Ayesha Auto Reseller
  ## Admin credentials
-<li>adminEmail:< jangkar@mahbub.com > </li>
+<li>adminEmail:< abusurajbd@gmail.com > </li>
 <li>adminPassword:<@bSuraj123></li>
 <li>Please Turn off your add blocker</li>
 
