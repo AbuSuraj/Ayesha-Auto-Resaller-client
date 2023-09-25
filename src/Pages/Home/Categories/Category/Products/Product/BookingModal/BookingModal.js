@@ -8,7 +8,7 @@ const BookingModal = ({product, setBook}) => {
     
     const name = user?.displayName;
     const email = user?.email;
-    console.log(name,email)
+    // console.log(name,email)
     const handleBooking = event => {
         event.preventDefault();
         const form = event.target;
@@ -27,7 +27,7 @@ const BookingModal = ({product, setBook}) => {
             meetingLocation, image,resalePrice, product_id:_id
         }
         setBook(booking)
-console.log(booking)
+// console.log(booking)
         // TODO: send data to the server
         // and once data is saved then close the modal 
         // and display success toast
@@ -41,7 +41,7 @@ console.log(booking)
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
+                // console.log(data);
                 if (data.acknowledged) {
                     // setTreatment(null);
                     setBook(null)

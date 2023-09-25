@@ -7,7 +7,7 @@ import MyOrder from './MyOrder';
 const MyOrders = () => {
     const { user,loading } = useContext(AuthContext);
     const email = user?.email;
-    console.log(email);
+    // console.log(email);
     const {
       data: myOrders = [],
       refetch,
@@ -29,7 +29,7 @@ const MyOrders = () => {
       },
     });
 
-    console.log(myOrders)
+    // console.log(myOrders)
 
     if (isLoading && loading) {
       return (

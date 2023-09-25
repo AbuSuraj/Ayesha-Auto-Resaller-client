@@ -28,11 +28,11 @@ const Register = () => {
 
   const handleSignUp = (data) => {
     setSignUPError("");
-    console.log(data.password)
+    // console.log(data.password)
     createUser(data.email, data.password)
       .then((result) => {
         const user = result.user;
-        console.log(user);
+        // console.log(user);
         toast("User Created Successfully.");
         const userInfo = {
           displayName: data.name,
@@ -44,7 +44,7 @@ const Register = () => {
           .catch((err) => console.log(err));
       })
       .catch((error) => {
-        console.log(error);
+        // console.log(error);
         setSignUPError(error.message);
         setLoading(false);
       });
@@ -54,7 +54,7 @@ const Register = () => {
     signInWithGoogle().then(result => {
       // console.log(result.user);
       const accountType = 'buyer';
-      console.log(result.user.displayName,result.user.email, accountType);
+      // console.log(result.user.displayName,result.user.email, accountType);
       toast.success("User created Successfully with Google!");
       saveUser(result.user.displayName,result.user.email, accountType);
       // navigate(from, { replace: true })

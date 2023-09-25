@@ -28,13 +28,13 @@ const AddCategory = () => {
     .then(res => res.json())
         .then(imgData => {
             if(imgData.success){
-                console.log(imgData.data.url);
+                // console.log(imgData.data.url);
                 const category = {
                   categoryName: data.categoryName, 
                   
                     image: imgData.data.url
                 }
-                console.log(category);
+                // console.log(category);
                 fetch('https://ayeshaauto.vercel.app/addcategory', {
                     method: 'POST',
                     headers: {
@@ -45,14 +45,14 @@ const AddCategory = () => {
                 })
                     .then(res => res.json())
                     .then(data => {
-                        console.log(data)
+                        // console.log(data)
                         if(data.acknowledged){
                             toast.success('Service added successfully')
                             // form.reset();  
                         }
                     })
                     .catch(er => console.error(er));
-                  console.log(category)
+                  // console.log(category)
               }
             }
               )

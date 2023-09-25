@@ -14,7 +14,7 @@ const Product = ({product}) => {
  const year = date.getFullYear();
   const pYear = parseInt(purchaseYear)
   const usedYear = year - pYear;
- console.log(email);
+//  console.log(email);
  const {loading} = useContext(AuthContext)
  useTitle('category wise car')
  const {
@@ -38,7 +38,7 @@ const Product = ({product}) => {
   return  <div className=" my-5 mx-auto w-16 h-16 border-4 border-dashed rounded-full animate-spin dark:border-violet-400"></div> 
 }
  const handleReport = (product) =>{
-console.log(product);
+// console.log(product);
 
 const reportedItem = {product_id:_id,productName,condition,originalPrice,resalePrice,location,mobile,productDescription,purchaseYear,createdDate,image, seller, email}
 fetch('https://ayeshaauto.vercel.app/report', {
@@ -51,7 +51,7 @@ fetch('https://ayeshaauto.vercel.app/report', {
 })
 .then(res => res.json())
 .then(data => {
-    console.log(data)
+    // console.log(data)
     if(data.acknowledged){
         toast.success('Report sent to admin')
        
@@ -85,7 +85,9 @@ fetch('https://ayeshaauto.vercel.app/report', {
         <span className='text-green-600 ml-2 text-2xl'>
          {sellers?.map(sllr =><span key={sllr._id}
          >
-          {console.log(sllr)} {(sllr.email ===email && sllr.verify) ? <FaRegCheckCircle></FaRegCheckCircle>: ''} 
+          {/* {console.log(sllr)
+          } */}
+           {(sllr.email ===email && sllr.verify) ? <FaRegCheckCircle></FaRegCheckCircle>: ''} 
          </span>
          )
          }

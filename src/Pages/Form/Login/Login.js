@@ -23,17 +23,17 @@ const Login = () => {
         navigate(from, { replace: true });
     }
     const handleLogin = data => {
-        console.log(data);
+        // console.log(data);
         setLoginError('');
         signin(data.email, data.password)
             .then(result => {
                 const user = result.user;
-                console.log(user);
+                // console.log(user);
                 setLoginUserEmail(data.email);
                 // navigate(from, { replace: true });
             })
             .catch(error => {
-                console.log(error.message)
+                // console.log(error.message)
                 setLoginError(error.message);
                 setLoading(false)
                 
@@ -44,12 +44,12 @@ const Login = () => {
      const handleGoogleSignin = () => {
         signInWithGoogle().then((result) => {
           toast.success("Login Success!");
-          console.log(result.user.email);
+        //   console.log(result.user.email);
           setLoginUserEmail(result.user.email);
           navigate(from, { replace: true });
         });
       };
-      console.log(loginUserEmail);
+    //   console.log(loginUserEmail);
 
       if(loading){
         return  <div className=" my-5 mx-auto w-16 h-16 border-4 border-dashed rounded-full animate-spin dark:border-violet-400"></div> 

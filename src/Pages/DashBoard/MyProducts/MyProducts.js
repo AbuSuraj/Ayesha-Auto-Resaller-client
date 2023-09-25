@@ -8,7 +8,7 @@ const MyProducts = () => {
   const { user,loading } = useContext(AuthContext);
   useTitle('My products')
   const email = user?.email;
-  console.log(email);
+  // console.log(email);
   const {
     data: myProducts = [],
     refetch,
@@ -30,7 +30,7 @@ const MyProducts = () => {
   
 
 const handleAdvertise = id =>{
-  console.log(id)
+  // console.log(id)
   fetch(`https://ayeshaauto.vercel.app/products/advertise/${id}`,{
     method: 'PATCH',
     headers: {

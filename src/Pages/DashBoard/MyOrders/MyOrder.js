@@ -4,7 +4,7 @@ import useTitle from '../../../Hooks/useTitle';
 
 const MyOrder = ({myorder}) => {
   useTitle('My Orders')
-  console.log(myorder)
+  // console.log(myorder)
     const {_id,productName, resalePrice, image} = myorder;
     return (
 <div className="card w-96 bg-base-100 shadow-xl">

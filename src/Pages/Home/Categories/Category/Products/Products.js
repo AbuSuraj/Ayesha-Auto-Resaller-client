@@ -8,7 +8,7 @@ import Product from './Product/Product';
 const Products = () => {
     const {loading} = useContext(AuthContext)
     const {id} = useParams();
-    console.log(id);
+    // console.log(id);
     const { data: products = [], refetch, isLoading } = useQuery({
         queryKey: ['category'],
         queryFn: async () => {

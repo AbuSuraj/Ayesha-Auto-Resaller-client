@@ -35,7 +35,7 @@ const AddAProduct = () => {
     .then(res => res.json())
         .then(imgData => {
             if(imgData.success){
-                console.log(imgData.data.url);
+                // console.log(imgData.data.url);
                 const product = {
                   productName: data.productName, 
                   originalPrice: data.originalPrice,
@@ -53,7 +53,7 @@ const AddAProduct = () => {
                   isAdvertised:'false',
                   isPaid:false
                 }
-                console.log(product);
+                // console.log(product);
                 // added product into db
                 fetch('https://ayeshaauto.vercel.app/addproduct', {
                   method: 'POST',
@@ -65,7 +65,7 @@ const AddAProduct = () => {
               })
                   .then(res => res.json())
                   .then(data => {
-                      console.log(data)
+                      // console.log(data)
                       if(data.acknowledged){
                           toast.success('Product added successfully')
                           navigate("/dashboard/myproducts");

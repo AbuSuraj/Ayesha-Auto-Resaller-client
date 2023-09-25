@@ -71,7 +71,7 @@ const CheckoutForm = ({ booking }) => {
             return;
         }
         if (paymentIntent.status === "succeeded") {
-            console.log('card info', card);
+            // console.log('card info', card);
             // store payment info in the database
             const payment = {
                 resalePrice,
@@ -90,7 +90,7 @@ const CheckoutForm = ({ booking }) => {
             })
                 .then(res => res.json())
                 .then(data => {
-                    console.log(data);
+                    // console.log(data);
                     if (data.insertedId) {
                         setSuccess('Congrats! your payment completed');
                         setTransactionId(paymentIntent.id);
