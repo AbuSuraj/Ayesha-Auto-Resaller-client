@@ -40,6 +40,9 @@ const ErrorPage = () => {
           <p className='text-2xl font-semibold md:text-3xl mb-8'>
             Sorry, we couldn't find this page.
           </p>
+          <p className='text-xl font-semibold md:text-2xl mb-8'>
+            Turn off add blocker and try again!
+          </p>
           <Link
             to='/'
             className='px-8 py-3 font-semibold rounded bg-cyan-200 text-gray-900'
