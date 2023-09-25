@@ -5,10 +5,10 @@ import { AuthContext } from '../../../Context/AuthProvider';
 const Header = () => {
     const {user, logOut} = useContext(AuthContext);
     let activeStyle = {
-        backgroundColor: 'BFEAF5',
+        backgroundColor: '#B9BBE9',
         // color: 'black',
-        paddingLeft: '4px',
-        paddingRight: '4px',
+        paddingLeft: '12px',
+        paddingRight: '12px',
         paddingTop: '2px',
         paddingBottom: '2px',
         borderRadius: '10px'
@@ -19,30 +19,30 @@ const Header = () => {
             .catch(err => console.log(err));
     }
     const menuItems = <React.Fragment>
-  <li><NavLink style={({ isActive }) =>
+  <li className='mx-2'><NavLink style={({ isActive }) =>
               isActive ? activeStyle : undefined
             }   to="/">Home</NavLink></li>
-  <li><NavLink style={({ isActive }) =>
+  <li className='mx-2'><NavLink style={({ isActive }) =>
               isActive ? activeStyle : undefined
             }  to="/blog">Blog</NavLink></li>
   {/* <li><Link to="/login">Sign In</Link></li> */}
   
   {user?.uid ?
       <> 
-          <li><NavLink style={({ isActive }) =>
+          <li className='mx-2'><NavLink style={({ isActive }) =>
               isActive ? activeStyle : undefined
             }  to="/dashboard">Dashboard</NavLink></li>
-          <li><NavLink style={({ isActive }) =>
+          <li className='mx-2'><NavLink style={({ isActive }) =>
               isActive ? activeStyle : undefined
             } > {user?.displayName}</NavLink></li>
-          <li><button onClick={handleLogOut}>Sign out</button></li>
+          <li className='mx-2'><button onClick={handleLogOut}>Sign out</button></li>
       </>
       : 
       <>
-      <li><NavLink style={({ isActive }) =>
+      <li className='mx-2'><NavLink style={({ isActive }) =>
               isActive ? activeStyle : undefined
             } to="/login">Sign In</NavLink></li>
-      <li><NavLink style={({ isActive }) =>
+      <li className='mx-2'><NavLink style={({ isActive }) =>
               isActive ? activeStyle : undefined
             }  to="/register">Sign Up</NavLink></li>
       </>
