@@ -6,6 +6,8 @@ import Loading from "../../../components/Loading/Loading";
 import { AuthContext } from "../../../Context/AuthProvider";
 import useTitle from "../../../Hooks/useTitle";
 import useToken from "../../../Hooks/useToken";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
 const Register = () => {
   useTitle("Sign Up");
@@ -22,6 +24,8 @@ const Register = () => {
   const navigate = useNavigate();
   const location = useLocation()
   const from = location.state?.from?.pathname || '/'
+  const [showPassword, setShowPassword] = useState(false);
+
   if(token){
       navigate('/');
   }
@@ -114,31 +118,32 @@ const Register = () => {
               <p className="text-red-500">{errors.email.message}</p>
             )}
           </div>
-          <div className="form-control w-full max-w-xs">
-            <label className="label">
-              {" "}
-              <span className="label-text text-white">Password</span>
-            </label>
-            <input
-              type="password"
-              {...register("password", {
-                required: "Password is required",
-                minLength: {
-                  value: 6,
-                  message: "Password must be 6 characters long",
-                },
-                pattern: {
-                  value: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])/,
-                  message:
-                    "Password must have uppercase, number and special characters",
-                },
-              })}
-              className="input input-bordered w-full max-w-xs"
-            />
-            {errors.password && (
-              <p className="text-red-500">{errors.password.message}</p>
-            )}
-          </div>
+          <div className="form-control w-full max-w-xs relative">
+    <label className="label">
+        <span className="label-text text-white">Password</span>
+    </label>
+    <input
+        type={showPassword ? 'text' : 'password'} // Toggle between 'text' and 'password'
+        {...register('password', {
+            required: 'Password is required',
+            minLength: { value: 6, message: 'Password must be 6 characters or longer' },
+            pattern: {
+                value: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])/,
+                message: 'Password must have uppercase, number, and special characters',
+            },
+        })}
+        className="input input-bordered w-full max-w-xs"
+    />
+    <button
+        type="button"
+        className="absolute inset-y-0 right-0 px-2 pt-9 pb-1"
+        onClick={() => setShowPassword(!showPassword)}
+    >
+        <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
+    </button>
+    {errors.password && <p className="text-red-600">{errors.password.message}</p>}
+</div>
+
           <div className="form-control w-full max-w-xs ">
           <label className="label">
               {" "}
