@@ -8,7 +8,7 @@ import useTitle from "../../../Hooks/useTitle";
 import useToken from "../../../Hooks/useToken";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
-
+import './Login.css';
 const Login = () => {
   useTitle("Sign In");
   const {
@@ -60,7 +60,9 @@ const Login = () => {
 
   if (loading) {
     return (
-      <div className=" my-5 mx-auto w-16 h-16 border-4 border-dashed rounded-full animate-spin dark:border-violet-400"></div>
+        <div className="spinner"></div>
+
+    //   <div className=" my-5 mx-auto w-16 h-16 border-4 border-dashed rounded-full animate-spin dark:border-red-800"></div>
     );
   }
   return (

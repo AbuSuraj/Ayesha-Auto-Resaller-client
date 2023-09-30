@@ -34,8 +34,9 @@ const Product = ({product}) => {
    },
  });
 
- if(isLoading && loading){
-  return  <div className=" my-5 mx-auto w-16 h-16 border-4 border-dashed rounded-full animate-spin dark:border-violet-400"></div> 
+ if( loading){
+  return <div className="spinner"></div>
+
 }
  const handleReport = (product) =>{
 // console.log(product);
