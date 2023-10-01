@@ -103,6 +103,13 @@ const handleDeleteProduct = (id) =>{
             </tr>
           </thead>
           <tbody>
+          {isLoading && (
+              <tr>
+                <td colSpan="5" className="text-center py-5">
+                  <div className="spinner"></div>
+                </td>
+              </tr>
+            )}
             {myProducts?.map((myProduct, i) => (
               <tr key={myProduct._id}>
                 <th>{i + 1}</th>
