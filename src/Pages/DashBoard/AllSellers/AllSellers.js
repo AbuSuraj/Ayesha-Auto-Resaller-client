@@ -3,18 +3,24 @@ import React, { useContext } from "react";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../../Context/AuthProvider";
 import useTitle from "../../../Hooks/useTitle";
+import { useState } from "react";
+import ReactPaginate from "react-paginate";
 
 const AllSellers = () => {
   useTitle("Sellers");
   const { loading } = useContext(AuthContext);
+  const [pageNumber, setPageNumber] = useState(0);
+  const sellersPerPage = 5;
+
   const {
-    data: sellers = [],
+    data: sellers = {data: [], total:0, currentPage: 1, totalPages:1},
     refetch,
     isLoading,
   } = useQuery({
-    queryKey: ["sellers"],
-    queryFn: async () => {
-      const res = await fetch("http://localhost:5000/sellers", {
+    queryKey: ["sellers", pageNumber],
+    queryFn: async ({queryKey}) => {
+      const [key, page] = queryKey;
+      const res = await fetch(`http://localhost:5000/sellers?page=${page}&limit=${sellersPerPage}`, {
         headers: {
           "content-type": "application/json",
           authorization: `bearer ${localStorage.getItem("accessToken")}`,
@@ -25,6 +31,11 @@ const AllSellers = () => {
     },
   });
 
+  const pageCount = sellers.totalPages;
+
+  const handlePageClick = ({selected}) =>{
+    setPageNumber(selected + 1)
+  }
   const handleDelete = (id) => {
     Swal.fire({
       title: "Are you sure?",
@@ -96,7 +107,7 @@ const AllSellers = () => {
   return (
     <div className="mx-4">
       <h2 className="text-3xl my-5 text-center">
-        Total sellers: {sellers?.length}
+        Total sellers: {sellers?.total}
       </h2>
       <div className="overflow-x-auto">
         <table className="table w-full">
@@ -117,7 +128,7 @@ const AllSellers = () => {
                 </td>
               </tr>
             )}
-            {sellers?.map((seller, i) => (
+            {sellers?.data?.map((seller, i) => (
               <tr key={seller._id}>
                 <th>{i + 1}</th>
                 <td>{seller.name}</td>
@@ -148,6 +159,21 @@ const AllSellers = () => {
           </tbody>
         </table>
       </div>
+      <ReactPaginate
+          breakLabel={'...'}
+          breakClassName={'break-me'}
+          pageCount={pageCount}
+          marginPagesDisplayed={2}
+          pageRangeDisplayed={5}
+          onPageChange={handlePageClick}
+          containerClassName={'pagination'}
+          subContainerClassName={'pages pagination'}
+          activeClassName={'active'}
+          previousClassName={pageNumber === 1 ? 'previous disabled' : 'previous'}
+          nextClassName={pageNumber === pageCount ? 'next disabled' : 'next'}
+          previousLabel={pageNumber === 1 ? 'Previous' : 'Previous'}
+          nextLabel={pageNumber === pageCount ? 'Next' : 'Next'}
+        />
     </div>
   );
 };
