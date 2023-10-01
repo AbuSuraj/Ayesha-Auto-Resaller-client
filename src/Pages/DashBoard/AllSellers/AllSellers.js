@@ -14,7 +14,7 @@ const AllSellers = () => {
   } = useQuery({
     queryKey: ["sellers"],
     queryFn: async () => {
-      const res = await fetch("https://ayeshaauto.vercel.app/sellers", {
+      const res = await fetch("http://localhost:5000/sellers", {
         headers: {
           "content-type": "application/json",
           authorization: `bearer ${localStorage.getItem("accessToken")}`,
@@ -36,7 +36,7 @@ const AllSellers = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`https://ayeshaauto.vercel.app/seller/${id}`, {
+        fetch(`http://localhost:5000/seller/${id}`, {
           method: "DELETE",
           headers: {
             "content-type": "application/json",
@@ -66,7 +66,7 @@ const AllSellers = () => {
       confirmButtonText: "Yes, verify it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`https://ayeshaauto.vercel.app/verifySeller/${id}`, {
+        fetch(`http://localhost:5000/verifySeller/${id}`, {
           method: "PATCH",
 
           headers: {

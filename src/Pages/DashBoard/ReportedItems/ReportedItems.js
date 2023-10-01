@@ -33,7 +33,7 @@ const ReportedItems = () => {
           confirmButtonText: "Yes, delete it!",
         }).then((result) => {
           if (result.isConfirmed) {
-            fetch(`https://ayeshaauto.vercel.app/report/${itemId}`, {
+            fetch(`http://localhost:5000/report/${itemId}`, {
               method: "DELETE",
               headers: {
                 'content-type': 'application/json',
@@ -48,7 +48,7 @@ const ReportedItems = () => {
                 } 
               });
             //   deleting reported item 
-              fetch(`https://ayeshaauto.vercel.app/reportedItem/${itemId}`, {
+              fetch(`http://localhost:5000/reportedItem/${itemId}`, {
                 method: "DELETE",
                 headers: {
                   'content-type': 'application/json',
