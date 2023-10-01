@@ -27,10 +27,10 @@ const AdvertismentItems = () => {
     <div>
       {advertisementItems.length > 0 ? (
         <div className="my-7">
-          <h2 className="font-bold text-3xl text-center">
+          <h2 className="font-bold text-3xl text-center drop-shadow-2xl">
             Products Advertisement
           </h2>
-          <div className="grid gap-6 ml-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 my-10">
+          <div className="grid gap-6 ml-36 md:ml-14 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 my-10">
             {advertisementItems.map((advertisementItem) => (
               <SingleItem
                 key={advertisementItem._id}
