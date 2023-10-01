@@ -5,8 +5,8 @@ import { AuthContext } from "../../../Context/AuthProvider";
 import useTitle from "../../../Hooks/useTitle";
 
 const AllSellers = () => {
-useTitle('Sellers');
-const {loading} = useContext(AuthContext)
+  useTitle("Sellers");
+  const { loading } = useContext(AuthContext);
   const {
     data: sellers = [],
     refetch,
@@ -14,12 +14,12 @@ const {loading} = useContext(AuthContext)
   } = useQuery({
     queryKey: ["sellers"],
     queryFn: async () => {
-      const res = await fetch("https://ayeshaauto.vercel.app/sellers",
-  {    headers: {
-        'content-type': 'application/json',
-        authorization: `bearer ${localStorage.getItem('accessToken')}`
-    },}
-      );
+      const res = await fetch("https://ayeshaauto.vercel.app/sellers", {
+        headers: {
+          "content-type": "application/json",
+          authorization: `bearer ${localStorage.getItem("accessToken")}`,
+        },
+      });
       const data = await res.json();
       return data;
     },
@@ -39,9 +39,9 @@ const {loading} = useContext(AuthContext)
         fetch(`https://ayeshaauto.vercel.app/seller/${id}`, {
           method: "DELETE",
           headers: {
-            'content-type': 'application/json',
-            authorization: `bearer ${localStorage.getItem('accessToken')}`
-        },
+            "content-type": "application/json",
+            authorization: `bearer ${localStorage.getItem("accessToken")}`,
+          },
         })
           .then((res) => res.json())
           .then((data) => {
@@ -66,34 +66,33 @@ const {loading} = useContext(AuthContext)
       confirmButtonText: "Yes, verify it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`https://ayeshaauto.vercel.app/verifySeller/${id}`,{
-          method: 'PATCH',
-          
+        fetch(`https://ayeshaauto.vercel.app/verifySeller/${id}`, {
+          method: "PATCH",
+
           headers: {
-              'content-type':'application/json',
-              
-              authorization: `bearer ${localStorage.getItem('accessToken')}`
+            "content-type": "application/json",
+
+            authorization: `bearer ${localStorage.getItem("accessToken")}`,
           },
           // body: JSON.stringify( )
-      })
-      .then(res => res.json())
-      .then(data =>{
-          if(data.modifiedCount > 0){
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.modifiedCount > 0) {
               Swal.fire("Verified successfully");
               refetch();
-         }
-      })
+            }
+          });
       }
-      
     });
   };
 
   // console.log(sellers);
-  if (isLoading && loading) {
-    return (
-      <div className=" my-5 mx-auto w-16 h-16 border-4 border-dashed rounded-full animate-spin dark:border-violet-400"></div>
-    );
-  }
+  // if (isLoading && loading) {
+  //   return (
+  //     <div className="spinner"></div>
+  //   );
+  // }
   return (
     <div className="mx-4">
       <h2 className="text-3xl my-5 text-center">
@@ -111,6 +110,13 @@ const {loading} = useContext(AuthContext)
             </tr>
           </thead>
           <tbody>
+            {isLoading && (
+              <tr>
+                <td colSpan="5" className="text-center py-5">
+                  <div className="spinner"></div>
+                </td>
+              </tr>
+            )}
             {sellers?.map((seller, i) => (
               <tr key={seller._id}>
                 <th>{i + 1}</th>
@@ -126,14 +132,16 @@ const {loading} = useContext(AuthContext)
                   </button>
                 </td>
                 <td>
-{
-            seller.verify ? <button className="btn btn-xs btn-info" >Verified</button> :
-            <button
-                    onClick={() => handleVerify(seller._id)}
-                    className="btn btn-xs btn-secondary"
-                  >
-                    Verify
-                  </button>}
+                  {seller.verify ? (
+                    <button className="btn btn-xs btn-info">Verified</button>
+                  ) : (
+                    <button
+                      onClick={() => handleVerify(seller._id)}
+                      className="btn btn-xs btn-secondary"
+                    >
+                      Verify
+                    </button>
+                  )}
                 </td>
               </tr>
             ))}

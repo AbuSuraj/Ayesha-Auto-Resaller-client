@@ -68,11 +68,7 @@ const ReportedItems = () => {
         });
       };
 
-      if (isLoading && loading) {
-        return (
-          <div className=" my-5 mx-auto w-16 h-16 border-4 border-dashed rounded-full animate-spin dark:border-violet-400"></div>
-        );
-      }
+     
     return (
         <div className="mx-4">
         <h2 className="text-3xl my-5 text-center">
@@ -89,6 +85,13 @@ const ReportedItems = () => {
               </tr>
             </thead>
             <tbody>
+            {isLoading && (
+              <tr>
+                <td colSpan="4" className="text-center py-5">
+                  <div className="spinner"></div>
+                </td>
+              </tr>
+            )}
               {reportedItems?.map((reporteditem, i) => (
                 <tr key={reporteditem._id}>
                   <th>{i + 1}</th>
