@@ -14,7 +14,7 @@ const AllBuyers = () => {
       } = useQuery({
         queryKey: ["buyers"],
         queryFn: async () => {
-          const res = await fetch("https://ayeshaauto.vercel.app/buyers",
+          const res = await fetch("http://localhost:5000/buyers",
           {    headers: {
             'content-type': 'application/json',
             authorization: `bearer ${localStorage.getItem('accessToken')}`
