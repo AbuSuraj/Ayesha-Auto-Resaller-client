@@ -3,24 +3,35 @@ import React, { useContext } from 'react';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../../../Context/AuthProvider';
 import useTitle from '../../../Hooks/useTitle';
+import { useState } from 'react';
+import ReactPaginate from 'react-paginate';
 
 const ReportedItems = () => {
   const {loading} = useContext(AuthContext)
     useTitle('Reported Items');
-    
+    const [pageNumber, setPageNumber] = useState(0);
+    const reportsPerPage = 5;
+
     const {
-        data: reportedItems = [],
+        data: reportedItems = { data: [], total: 0, currentPage: 1, totalPages: 1},
         refetch,
         isLoading,
       } = useQuery({
         queryKey: ["report"],
-        queryFn: async () => {
-          const res = await fetch("https://ayeshaauto.vercel.app/report");
+        queryFn: async ({queryKey}) => {
+          const [key, page ]= queryKey;
+          const res = await fetch(`http://localhost:5000/report?page=${page}&limit=${reportsPerPage}`);
           const data = await res.json();
           return data;
         },
       });
+      const pageCount = reportedItems.totalPages;
 
+      const handlePageClick = ({ selected }) => {
+        // Handle page click event
+        setPageNumber(selected + 1); // Note the +1 to match the backend's 1-based page indexing
+    
+      };
       const handleDelete = (reportId, itemId) => {
         // console.log(reportId,itemId)
         Swal.fire({
@@ -72,7 +83,7 @@ const ReportedItems = () => {
     return (
         <div className="mx-4">
         <h2 className="text-3xl my-5 text-center">
-          Total Reported Items: {reportedItems?.length}
+          Total Reported Items: {reportedItems?.total}
         </h2>
         <div className="overflow-x-auto">
           <table className="table w-full">
@@ -92,7 +103,7 @@ const ReportedItems = () => {
                 </td>
               </tr>
             )}
-              {reportedItems?.map((reporteditem, i) => (
+              {reportedItems?.data?.map((reporteditem, i) => (
                 <tr key={reporteditem._id}>
                   <th>{i + 1}</th>
                   <td>{reporteditem.productName}</td>
@@ -112,6 +123,21 @@ const ReportedItems = () => {
             </tbody>
           </table>
         </div>
+        <ReactPaginate
+          breakLabel={'...'}
+          breakClassName={'break-me'}
+          pageCount={pageCount}
+          marginPagesDisplayed={2}
+          pageRangeDisplayed={5}
+          onPageChange={handlePageClick}
+          containerClassName={'pagination'}
+          subContainerClassName={'pages pagination'}
+          activeClassName={'active'}
+          previousClassName={pageNumber === 1 ? 'previous disabled' : 'previous'}
+          nextClassName={pageNumber === pageCount ? 'next disabled' : 'next'}
+          previousLabel={pageNumber === 1 ? 'Previous' : 'Previous'}
+          nextLabel={pageNumber === pageCount ? 'Next' : 'Next'}
+        />
       </div>
     );
 };
