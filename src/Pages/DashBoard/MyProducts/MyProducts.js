@@ -17,7 +17,7 @@ const MyProducts = () => {
     queryKey: ["myproducts"],
     queryFn: async () => {
       const res = await fetch(
-        `http://localhost:5000/myproducts/seller/${email}`,
+        `https://ayeshaauto.vercel.app/myproducts/seller/${email}`,
  {       headers: {
           'content-type': 'application/json',
           authorization: `bearer ${localStorage.getItem('accessToken')}`
@@ -60,7 +60,7 @@ const handleDeleteProduct = (id) =>{
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/product/${id}`, {
+        fetch(`https://ayeshaauto.vercel.app/product/${id}`, {
           method: "DELETE",
           headers: {
             'content-type': 'application/json',

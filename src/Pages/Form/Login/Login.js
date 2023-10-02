@@ -137,6 +137,12 @@ const Login = () => {
         >
           CONTINUE WITH GOOGLE
         </button>
+    <div className="mt-2">
+      <h6  className="text-red-600">Login Credential</h6>
+      <p className="text-white text-sm">Admin: abusurajbd@gmail.com, pass: @bSuraj123</p>
+      <p  className="text-white text-sm">Seller: sarwar@b.com, pass: @bSuraj123</p> 
+      <p  className="text-white text-sm">Login with google is count as Buyer</p>
+    </div>
       </div>
     </div>
   );

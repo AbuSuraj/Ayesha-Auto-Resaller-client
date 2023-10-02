@@ -20,7 +20,7 @@ const ReportedItems = () => {
         queryKey: ["report"],
         queryFn: async ({queryKey}) => {
           const [key, page ]= queryKey;
-          const res = await fetch(`http://localhost:5000/report?page=${page}&limit=${reportsPerPage}`);
+          const res = await fetch(`https://ayeshaauto.vercel.app/report?page=${page}&limit=${reportsPerPage}`);
           const data = await res.json();
           return data;
         },
@@ -44,7 +44,7 @@ const ReportedItems = () => {
           confirmButtonText: "Yes, delete it!",
         }).then((result) => {
           if (result.isConfirmed) {
-            fetch(`http://localhost:5000/report/${itemId}`, {
+            fetch(`https://ayeshaauto.vercel.app/report/${itemId}`, {
               method: "DELETE",
               headers: {
                 'content-type': 'application/json',
@@ -59,7 +59,7 @@ const ReportedItems = () => {
                 } 
               });
             //   deleting reported item 
-              fetch(`http://localhost:5000/reportedItem/${itemId}`, {
+              fetch(`https://ayeshaauto.vercel.app/reportedItem/${itemId}`, {
                 method: "DELETE",
                 headers: {
                   'content-type': 'application/json',
