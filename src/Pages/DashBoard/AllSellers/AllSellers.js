@@ -5,22 +5,29 @@ import { AuthContext } from "../../../Context/AuthProvider";
 import useTitle from "../../../Hooks/useTitle";
 import { useState } from "react";
 import ReactPaginate from "react-paginate";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowUp, faArrowDown } from "@fortawesome/free-solid-svg-icons"; // Import Font Awesome icons
+
+library.add(faArrowUp, faArrowDown);
 
 const AllSellers = () => {
   useTitle("Sellers");
   const { loading } = useContext(AuthContext);
   const [pageNumber, setPageNumber] = useState(0);
   const sellersPerPage = 5;
+  const [sortBy, setSortBy] = useState({column: 'name', order: 'asc'});
 
   const {
     data: sellers = {data: [], total:0, currentPage: 1, totalPages:1},
     refetch,
     isLoading,
   } = useQuery({
-    queryKey: ["sellers", pageNumber],
+    queryKey: ["sellers", pageNumber, sortBy],
     queryFn: async ({queryKey}) => {
-      const [key, page] = queryKey;
-      const res = await fetch(`https://ayeshaauto.vercel.app/sellers?page=${page}&limit=${sellersPerPage}`, {
+      const [key, page, sort] = queryKey;
+      const {column, order} = sort;
+      const res = await fetch(`http://localhost:5000/sellers?page=${page}&limit=${sellersPerPage}&sort=${column}&order=${order}`, {
         headers: {
           "content-type": "application/json",
           authorization: `bearer ${localStorage.getItem("accessToken")}`,
@@ -104,6 +111,12 @@ const AllSellers = () => {
   //     <div className="spinner"></div>
   //   );
   // }
+  const toggleSort = (column) => {
+    setSortBy((prevSort) => ({
+      column,
+      order: prevSort.column === column ? (prevSort.order === "asc" ? "desc" : "asc") : "asc",
+    }));
+  };
   return (
     <div className="mx-4">
       <h2 className="text-3xl my-5 text-center">
@@ -113,8 +126,20 @@ const AllSellers = () => {
         <table className="table w-full">
           <thead>
             <tr>
-              <th></th>
-              <th>Name</th>
+              {/* <th></th> */}
+              <th>Name
+              <button
+                  onClick={() => toggleSort("name")}
+                  className="ml-3 bg-transparent border-none cursor-pointer p-0 text-base text-black-600 hover:text-gray-600 transition-colors duration-300"
+                >
+                  {sortBy.column === "name" && sortBy.order === "asc" && (
+                    <FontAwesomeIcon icon="arrow-up" />
+                  )}
+                  {sortBy.column === "name" && sortBy.order === "desc" && (
+                    <FontAwesomeIcon icon="arrow-down" />
+                  )}
+                </button>
+              </th>
               <th>Email</th>
               <th>Delete</th>
               <th>Verifcation Status</th>
@@ -130,7 +155,7 @@ const AllSellers = () => {
             )}
             {sellers?.data?.map((seller, i) => (
               <tr key={seller._id}>
-                <th>{i + 1}</th>
+                {/* <th>{i + 1}</th> */}
                 <td>{seller.name}</td>
                 <td>{seller.email}</td>
                 {/* <td>{ user?.role !== 'admin' && <button onClick={() => handleMakeAdmin(user._id)} className='btn btn-xs btn-primary'>Make Admin</button>}</td> */}
