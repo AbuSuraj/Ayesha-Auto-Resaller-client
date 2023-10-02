@@ -49,6 +49,7 @@ const Login = () => {
           navigate(from, { replace: true });
         });
       };
+      
     //   console.log(loginUserEmail);
 
       if(loading){
@@ -90,6 +91,6 @@ const Login = () => {
             </div>
         </div>
     );
-};
+}
 
 export default Login;
