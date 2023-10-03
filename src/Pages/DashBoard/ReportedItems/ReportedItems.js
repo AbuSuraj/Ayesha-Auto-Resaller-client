@@ -109,7 +109,7 @@ const ReportedItems = () => {
           {/* <th></th> */}
           <th
             onClick={() => handleSort('productName')}
-            className='w-1/3'
+            className='w-1/3 cursor-pointer'
           >
             Product Name{' '}
             {sortColumn === 'productName' && (
@@ -121,7 +121,7 @@ const ReportedItems = () => {
           </th>
           <th
             onClick={() => handleSort('seller')}
-            className='w-1/3'
+            className='w-1/3 cursor-pointer'
           >
             Seller Name{' '}
             {sortColumn === 'seller' && (

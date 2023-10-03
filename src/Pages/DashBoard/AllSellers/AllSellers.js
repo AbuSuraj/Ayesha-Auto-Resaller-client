@@ -127,7 +127,7 @@ const AllSellers = () => {
           <thead>
             <tr>
               {/* <th></th> */}
-              <th>Name
+              <th className="cursor-pointer">Name
               <button
                   onClick={() => toggleSort("name")}
                   className="ml-3 bg-transparent border-none cursor-pointer p-0 text-base text-black-600 hover:text-gray-600 transition-colors duration-300"

@@ -121,7 +121,7 @@ const AllBuyers = () => {
               {/* <th></th> */}
               <th
             onClick={() => handleSort('name')}
-            className='w-1/3'
+            className='w-1/3 cursor-pointer'
           >
             Name{' '}
             {sortColumn === 'name' && (
@@ -133,7 +133,7 @@ const AllBuyers = () => {
           </th>
           <th
             onClick={() => handleSort('email')}
-            className='w-1/3'
+            className='w-1/3 cursor-pointer'
           >
             Email{' '}
             {sortColumn === 'email' && (
