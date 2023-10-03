@@ -5,22 +5,27 @@ import { AuthContext } from '../../../Context/AuthProvider';
 import useTitle from '../../../Hooks/useTitle';
 import { useState } from 'react';
 import ReactPaginate from 'react-paginate';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowUp, faArrowDown } from '@fortawesome/free-solid-svg-icons';
+
 
 const ReportedItems = () => {
   const {loading} = useContext(AuthContext)
     useTitle('Reported Items');
     const [pageNumber, setPageNumber] = useState(0);
     const reportsPerPage = 5;
-
+    const [sortColumn, setSortColumn] = useState('name'); // Default sorting column
+    const [sortDirection, setSortDirection] = useState('asc');
     const {
         data: reportedItems = { data: [], total: 0, currentPage: 1, totalPages: 1},
         refetch,
         isLoading,
       } = useQuery({
-        queryKey: ["report"],
+        queryKey: ["report", pageNumber, sortColumn, sortDirection],
         queryFn: async ({queryKey}) => {
-          const [key, page ]= queryKey;
-          const res = await fetch(`https://ayeshaauto.vercel.app/report?page=${page}&limit=${reportsPerPage}`);
+          const [key, page, column, direction] = queryKey;
+        
+          const res = await fetch(`https://ayeshaauto.vercel.app/report?page=${page}&limit=${reportsPerPage}&sort=${column}&order=${direction}`);
           const data = await res.json();
           return data;
         },
@@ -79,7 +84,19 @@ const ReportedItems = () => {
         });
       };
 
-     
+      
+      const handleSort = (column) => {
+        if (sortColumn === column) {
+          // If the same column is clicked again, toggle the sorting direction
+          setSortDirection(sortDirection === 'asc' ? 'desc' : 'asc');
+        } else {
+          // If a new column is clicked, set it as the sorting column in ascending order
+          setSortColumn(column);
+          setSortDirection('asc');
+        }
+      };
+      
+      
     return (
         <div className="mx-4">
         <h2 className="text-3xl my-5 text-center">
@@ -87,14 +104,37 @@ const ReportedItems = () => {
         </h2>
         <div className="overflow-x-auto">
           <table className="table w-full">
-            <thead>
-              <tr>
-                <th></th>
-                <th>Product Name</th>
-                <th>Seller Name</th>
-                <th>Delete</th>
-              </tr>
-            </thead>
+          <thead>
+        <tr>
+          {/* <th></th> */}
+          <th
+            onClick={() => handleSort('productName')}
+            className='w-1/3'
+          >
+            Product Name{' '}
+            {sortColumn === 'productName' && (
+              <FontAwesomeIcon
+              className="ml-3 bg-transparent border-none cursor-pointer p-0 text-base text-black-600 hover:text-gray-600 transition-colors duration-300"
+                icon={sortDirection === 'asc' ? faArrowUp : faArrowDown}
+              />
+            )}
+          </th>
+          <th
+            onClick={() => handleSort('seller')}
+            className='w-1/3'
+          >
+            Seller Name{' '}
+            {sortColumn === 'seller' && (
+              <FontAwesomeIcon
+              className="ml-3 bg-transparent border-none cursor-pointer p-0 text-base text-black-600 hover:text-gray-600 transition-colors duration-300"
+                icon={sortDirection === 'asc' ? faArrowUp : faArrowDown}
+              />
+            )}
+          </th>
+          <th className='w-1/3'>Delete</th>
+        </tr>
+      </thead>
+
             <tbody>
             {isLoading && (
               <tr>
@@ -105,7 +145,7 @@ const ReportedItems = () => {
             )}
               {reportedItems?.data?.map((reporteditem, i) => (
                 <tr key={reporteditem._id}>
-                  <th>{i + 1}</th>
+                  {/* <th>{i + 1}</th> */}
                   <td>{reporteditem.productName}</td>
                   <td>{reporteditem.seller}</td>
                   {/* <td>{ user?.role !== 'admin' && <button onClick={() => handleMakeAdmin(user._id)} className='btn btn-xs btn-primary'>Make Admin</button>}</td> */}
