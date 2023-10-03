@@ -42,7 +42,7 @@ const AllBuyers = () => {
       queryFn: async ({ queryKey }) => {
         const [key, page, column, direction] = queryKey;
         const res = await fetch(
-          `http://localhost:5000/buyers?page=${page}&limit=${buyersPerPage}&sort=${column}&order=${direction}`,
+          `https://ayeshaauto.vercel.app/buyers?page=${page}&limit=${buyersPerPage}&sort=${column}&order=${direction}`,
           {
             headers: {
               'content-type': 'application/json',

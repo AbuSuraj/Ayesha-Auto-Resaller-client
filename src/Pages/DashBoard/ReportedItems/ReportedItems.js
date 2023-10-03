@@ -25,7 +25,7 @@ const ReportedItems = () => {
         queryFn: async ({queryKey}) => {
           const [key, page, column, direction] = queryKey;
         
-          const res = await fetch(`http://localhost:5000/report?page=${page}&limit=${reportsPerPage}&sort=${column}&order=${direction}`);
+          const res = await fetch(`https://ayeshaauto.vercel.app/report?page=${page}&limit=${reportsPerPage}&sort=${column}&order=${direction}`);
           const data = await res.json();
           return data;
         },

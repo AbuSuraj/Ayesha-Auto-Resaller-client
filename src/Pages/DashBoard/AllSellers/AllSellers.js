@@ -27,7 +27,7 @@ const AllSellers = () => {
     queryFn: async ({queryKey}) => {
       const [key, page, sort] = queryKey;
       const {column, order} = sort;
-      const res = await fetch(`http://localhost:5000/sellers?page=${page}&limit=${sellersPerPage}&sort=${column}&order=${order}`, {
+      const res = await fetch(`https://ayeshaauto.vercel.app/sellers?page=${page}&limit=${sellersPerPage}&sort=${column}&order=${order}`, {
         headers: {
           "content-type": "application/json",
           authorization: `bearer ${localStorage.getItem("accessToken")}`,
