@@ -6,11 +6,15 @@ import useTitle from '../../../Hooks/useTitle';
 import { useState } from 'react';
 import ReactPaginate from 'react-paginate';
 import './AllBuyers.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowDown, faArrowUp } from '@fortawesome/free-solid-svg-icons';
 const AllBuyers = () => {
   const {loading} = useContext(AuthContext)
   useTitle('Buyers');
   const [pageNumber, setPageNumber] = useState(0); // Initialize the page number state
   const buyersPerPage = 5; // Number of buyers to display per page
+  const [sortColumn, setSortColumn] = useState('name'); // Default sorting column
+  const [sortDirection, setSortDirection] = useState('asc'); // Default sorting direction
 
     // const {
     //     data: buyers = [],
@@ -34,11 +38,11 @@ const AllBuyers = () => {
       refetch,
       isLoading,
     } = useQuery({
-      queryKey: ['buyers', pageNumber],
+      queryKey: ['buyers', pageNumber, sortColumn, sortDirection],
       queryFn: async ({ queryKey }) => {
-        const [key, page] = queryKey;
+        const [key, page, column, direction] = queryKey;
         const res = await fetch(
-          `https://ayeshaauto.vercel.app/buyers?page=${page}&limit=${buyersPerPage}`,
+          `http://localhost:5000/buyers?page=${page}&limit=${buyersPerPage}&sort=${column}&order=${direction}`,
           {
             headers: {
               'content-type': 'application/json',
@@ -89,7 +93,17 @@ const AllBuyers = () => {
         });
       };
     
-    
+      const handleSort = (column) => {
+        if (sortColumn === column) {
+          // If the same column is clicked again, toggle the sorting direction
+          setSortDirection(sortDirection === 'asc' ? 'desc' : 'asc');
+        } else {
+          // If a new column is clicked, set it as the sorting column in ascending order
+          setSortColumn(column);
+          setSortDirection('asc');
+        }
+      };
+   
       // if (isLoading && loading) {
       //   return (
       //     <div className="spinner"></div>
@@ -102,14 +116,36 @@ const AllBuyers = () => {
           </h2>
           <div className="overflow-x-auto">
             <table className="table w-full">
-              <thead>
-                <tr>
-                  <th></th>
-                  <th>Name</th>
-                  <th>Email</th>
-                  <th>Delete</th>
-                </tr>
-              </thead>
+            <thead>
+            <tr>
+              {/* <th></th> */}
+              <th
+            onClick={() => handleSort('name')}
+            className='w-1/3'
+          >
+            Name{' '}
+            {sortColumn === 'name' && (
+              <FontAwesomeIcon
+              className="ml-3 bg-transparent border-none cursor-pointer p-0 text-base text-black-600 hover:text-gray-600 transition-colors duration-300"
+                icon={sortDirection === 'asc' ? faArrowUp : faArrowDown}
+              />
+            )}
+          </th>
+          <th
+            onClick={() => handleSort('email')}
+            className='w-1/3'
+          >
+            Email{' '}
+            {sortColumn === 'email' && (
+              <FontAwesomeIcon
+              className="ml-3 bg-transparent border-none cursor-pointer p-0 text-base text-black-600 hover:text-gray-600 transition-colors duration-300"
+                icon={sortDirection === 'asc' ? faArrowUp : faArrowDown}
+              />
+            )}
+          </th>
+              <th className='w-1/3'>Delete</th>
+            </tr>
+          </thead>
               <tbody>
               {isLoading && (
               <tr>
@@ -118,22 +154,21 @@ const AllBuyers = () => {
                 </td>
               </tr>
             )}
-                {buyers?.data?.map((buyer, i) => (
-                  <tr key={buyer._id}>
-                    <th>{i + 1}</th>
-                    <td>{buyer.name}</td>
-                    <td>{buyer.email}</td>
-                    {/* <td>{ user?.role !== 'admin' && <button onClick={() => handleMakeAdmin(user._id)} className='btn btn-xs btn-primary'>Make Admin</button>}</td> */}
-                    <td>
-                      <button
-                        onClick={() => handleDelete(buyer._id)}
-                        className="btn btn-xs btn-error"
-                      >
-                        Delete
-                      </button>
-                    </td>
-                  </tr>
-                ))}
+               {buyers?.data?.map((buyer, i) => (
+              <tr key={buyer._id}>
+                {/* <th>{i + 1}</th> */}
+                <td>{buyer.name}</td>
+                <td>{buyer.email}</td>
+                <td>
+                  <button
+                    onClick={() => handleDelete(buyer._id)}
+                    className="btn btn-xs btn-error"
+                  >
+                    Delete
+                  </button>
+                </td>
+              </tr>
+            ))}
               </tbody>
             </table>
             </div>
