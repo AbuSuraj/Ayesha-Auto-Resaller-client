@@ -51,7 +51,7 @@ const AllBuyers = () => {
           }
         );
         const data = await res.json();
-        console.log(buyers);
+        // console.log(buyers);
         return data;
       },
     });
