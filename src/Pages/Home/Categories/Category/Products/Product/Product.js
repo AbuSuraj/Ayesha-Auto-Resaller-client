@@ -18,7 +18,7 @@ const Product = ({product}) => {
  const {loading} = useContext(AuthContext)
  useTitle('category wise car')
  const {
-   data: sellers = [],
+   data: sellers =  {data: [], total:0, currentPage: 1, totalPages:1},
    refetch,
    isLoading,
  } = useQuery({
@@ -33,6 +33,8 @@ const Product = ({product}) => {
      return data;
    },
  });
+
+//  console.log(sellers.data)
 
  if( loading){
   return <div className="spinner"></div>
@@ -84,7 +86,7 @@ fetch('https://ayeshaauto.vercel.app/report', {
         <p className='flex items-center '><span><span className='font-bold'> Seller Name: </span> 
         {seller}</span>
         <span className='text-green-600 ml-2 text-2xl'>
-         {sellers?.map(sllr =><span key={sllr._id}
+         {sellers?.data?.map(sllr =><span key={sllr._id}
          >
           {/* {console.log(sllr)
           } */}
