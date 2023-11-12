@@ -23,7 +23,7 @@ const AllBuyers = () => {
     //   } = useQuery({
     //     queryKey: ["buyers"],
     //     queryFn: async () => {
-    //       const res = await fetch("https://ayeshaauto.vercel.app/buyers",
+    //       const res = await fetch("https://auto-reseller-api.vercel.app/buyers",
     //       {    headers: {
     //         'content-type': 'application/json',
     //         authorization: `bearer ${localStorage.getItem('accessToken')}`
@@ -42,7 +42,7 @@ const AllBuyers = () => {
       queryFn: async ({ queryKey }) => {
         const [key, page, column, direction] = queryKey;
         const res = await fetch(
-          `https://ayeshaauto.vercel.app/buyers?page=${page}&limit=${buyersPerPage}&sort=${column}&order=${direction}`,
+          `https://auto-reseller-api.vercel.app/buyers?page=${page}&limit=${buyersPerPage}&sort=${column}&order=${direction}`,
           {
             headers: {
               'content-type': 'application/json',
@@ -74,7 +74,7 @@ const AllBuyers = () => {
           confirmButtonText: "Yes, delete it!",
         }).then((result) => {
           if (result.isConfirmed) {
-            fetch(`https://ayeshaauto.vercel.app/buyer/${id}`, {
+            fetch(`https://auto-reseller-api.vercel.app/buyer/${id}`, {
               method: "DELETE",
               headers: {
                 'content-type': 'application/json',

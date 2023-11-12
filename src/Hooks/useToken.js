@@ -5,7 +5,7 @@ const useToken = email => {
     // console.log(email);
     useEffect(() => {
         if (email) {
-            fetch(`https://ayeshaauto.vercel.app/jwt?email=${email}`)
+            fetch(`https://auto-reseller-api.vercel.app/jwt?email=${email}`)
                 .then(res => res.json())
                 .then(data => {
                     if (data.accessToken) {

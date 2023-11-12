@@ -31,7 +31,7 @@ const BookingModal = ({product, setBook}) => {
         // TODO: send data to the server
         // and once data is saved then close the modal 
         // and display success toast
-        fetch('https://ayeshaauto.vercel.app/bookings', {
+        fetch('https://auto-reseller-api.vercel.app/bookings', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',

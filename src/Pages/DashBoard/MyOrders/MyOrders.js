@@ -16,7 +16,7 @@ const MyOrders = () => {
       queryKey: ["myorders"],
       queryFn: async () => {
         const res = await fetch(
-          `https://ayeshaauto.vercel.app/myorders/buyer/${email}`,
+          `https://auto-reseller-api.vercel.app/myorders/buyer/${email}`,
           {
             headers: {
               'content-type': 'application/json',

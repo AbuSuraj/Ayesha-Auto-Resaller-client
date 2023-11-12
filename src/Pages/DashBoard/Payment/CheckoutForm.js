@@ -14,7 +14,7 @@ const CheckoutForm = ({ booking }) => {
 
     useEffect(() => {
         // Create PaymentIntent as soon as the page loads
-        fetch("https://ayeshaauto.vercel.app/create-payment-intent", {
+        fetch("http://localhost:5001/create-payment-intent", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -80,7 +80,7 @@ const CheckoutForm = ({ booking }) => {
                 bookingId: _id,
                 product_id: product_id
             }
-            fetch('https://ayeshaauto.vercel.app/payments', {
+            fetch('https://auto-reseller-api.vercel.app/payments', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json',

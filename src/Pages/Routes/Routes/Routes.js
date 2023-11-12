@@ -94,7 +94,7 @@ export const routes = createBrowserRouter([
             {
                 path: '/dashboard/payment/:id',
                 element: <Payment></Payment>,
-                loader: ({params}) => fetch(`https://ayeshaauto.vercel.app/bookings/${params.id}`)
+                loader: ({params}) => fetch(`https://auto-reseller-api.vercel.app/bookings/${params.id}`)
             },
 
 

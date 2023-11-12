@@ -27,7 +27,7 @@ const AllSellers = () => {
     queryFn: async ({queryKey}) => {
       const [key, page, sort] = queryKey;
       const {column, order} = sort;
-      const res = await fetch(`https://ayeshaauto.vercel.app/sellers?page=${page}&limit=${sellersPerPage}&sort=${column}&order=${order}`, {
+      const res = await fetch(`https://auto-reseller-api.vercel.app/sellers?page=${page}&limit=${sellersPerPage}&sort=${column}&order=${order}`, {
         headers: {
           "content-type": "application/json",
           authorization: `bearer ${localStorage.getItem("accessToken")}`,
@@ -54,7 +54,7 @@ const AllSellers = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`https://ayeshaauto.vercel.app/seller/${id}`, {
+        fetch(`https://auto-reseller-api.vercel.app/seller/${id}`, {
           method: "DELETE",
           headers: {
             "content-type": "application/json",
@@ -84,7 +84,7 @@ const AllSellers = () => {
       confirmButtonText: "Yes, verify it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`https://ayeshaauto.vercel.app/verifySeller/${id}`, {
+        fetch(`https://auto-reseller-api.vercel.app/verifySeller/${id}`, {
           method: "PATCH",
 
           headers: {

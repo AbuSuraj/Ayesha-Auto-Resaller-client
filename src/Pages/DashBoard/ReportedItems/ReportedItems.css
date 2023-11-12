@@ -1,0 +1,28 @@
+/* Add these styles to your CSS file or a style tag */
+table {
+    width: 100%;
+  }
+  
+  th {
+    position: relative;
+    white-space: nowrap; /* Prevent text from wrapping */
+    text-overflow: ellipsis; /* Add ellipsis for long text */
+    overflow: hidden;
+  }
+  
+  th:first-child {
+    width: 5%; /* Set a fixed width for the first column */
+  }
+  
+  th:nth-child(2) {
+    width: 25%; /* Set a fixed width for the second column */
+  }
+  
+  th:nth-child(3) {
+    width: 30%; /* Set a fixed width for the third column */
+  }
+  
+  th:nth-child(4) {
+    width: 15%; /* Set a fixed width for the fourth column */
+  }
+  

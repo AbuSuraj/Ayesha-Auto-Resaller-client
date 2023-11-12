@@ -55,7 +55,7 @@ const AddAProduct = () => {
                 }
                 // console.log(product);
                 // added product into db
-                fetch('https://ayeshaauto.vercel.app/addproduct', {
+                fetch('https://auto-reseller-api.vercel.app/addproduct', {
                   method: 'POST',
                   headers: {
                       'content-type': 'application/json',
@@ -81,7 +81,7 @@ const AddAProduct = () => {
      }
     //  fetching categories
 useEffect(()=>{
-  axios.get('https://ayeshaauto.vercel.app/categories')
+  axios.get('https://auto-reseller-api.vercel.app/categories')
   .then((data) =>{
     console.log(data);
     setCategories(data.data);

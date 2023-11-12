@@ -5,7 +5,7 @@ const useBuyer = email => {
     const [isBuyerLoading, setIsBuyerLoading] = useState(true);
     useEffect(() => {
         if (email) {
-            fetch(`https://ayeshaauto.vercel.app/users/buyer/${email}`,
+            fetch(`https://auto-reseller-api.vercel.app/users/buyer/${email}`,
             {
                 headers: {
                     'content-type': 'application/json',

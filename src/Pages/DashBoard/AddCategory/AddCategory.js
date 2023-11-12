@@ -35,7 +35,7 @@ const AddCategory = () => {
                     image: imgData.data.url
                 }
                 // console.log(category);
-                fetch('https://ayeshaauto.vercel.app/addcategory', {
+                fetch('https://auto-reseller-api.vercel.app/addcategory', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json',
