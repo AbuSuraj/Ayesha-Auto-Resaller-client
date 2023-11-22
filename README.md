@@ -4,6 +4,34 @@
 <li>adminPassword:<@bSuraj123></li>
 <li>Please Turn off your add blocker</li>
 
+## Project live site link:
+  
+<li>
+This project hosted in firebase. <br/>
+ Live site link-1: https://asyesha-auto-reseller.web.app/
+
+ Live site link-2: https://asyesha-auto-reseller.firebaseapp.com/
+
+</li>
+
+## React Features Used in this application
+
+###  State Mangement 
+ #### Context Api: <b>used in AuthProvider.js </b>
+     The AuthProvider employs React Context for global state management, centralizing authentication state and ensuring seamless access to user information and authentication status across the entire application.
+
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+
+
 ## Project Description
 <li>A simple Resale Car website made with using MERN Stack technology.</li>
 <li>To sign up there is a option for account type- buyer and seller. By default and google sign up is considered as buyer.</li>
@@ -26,15 +54,7 @@
 
 
 
-## Project live site link:
-  
-<li>
-This project hosted in firebase. <br/>
- Live site link-1: https://asyesha-auto-reseller.web.app/
 
- Live site link-2: https://asyesha-auto-reseller.firebaseapp.com/
-
-</li>
 
 ### Used Resources 
 <li>Firebase: https://firebase.google.com/</li>
@@ -51,9 +71,5 @@ This project hosted in firebase. <br/>
 <li>date-fns: https://www.npmjs.com/package/date-fns/</li>
 <li>Stripe: https://stripe.com/docs</li>
 
- 
-
- 
- 
 
  
