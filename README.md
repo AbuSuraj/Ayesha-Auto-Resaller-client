@@ -32,11 +32,11 @@ The AuthProvider employs React Context for global state management, centralizing
 1.  ####  ``` useEffect ```: it is used to perfrom side effects.
     Used in checkOut, authProvider, custom hook (useAdmin, useSeller, useToken, useBuyer) etc.
 
-2. #### tanstack query: this library is used for efficient and declarative data fetching, caching, and state management.
+2. #### ``` tanstack query ```: this library is used for efficient and declarative data fetching, caching, and state management.
     used in AllBuyers, AllSellers, MyOrders, MyProducts, Product, Categories and so on. 
-3. #### axios: simplifying API interactions and enhancing code readability  
+3. #### ``` axios```: simplifying API interactions and enhancing code readability  
    used in AddAProduct componet.
-4.  #### loader: The useLoaderData hook from react-router-dom is used to retrieve booking data
+4.  #### ``` loader ``` : The useLoaderData hook from react-router-dom is used to retrieve booking data
 ## Project Description
 <li>A simple Resale Car website made with using MERN Stack technology.</li>
 <li>To sign up there is a option for account type- buyer and seller. By default and google sign up is considered as buyer.</li>
