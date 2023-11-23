@@ -18,8 +18,8 @@ This project hosted in firebase. <br/>
 
 ###  State Mangement 
  #### Context Api: <b>used in AuthProvider.js </b>
-    The AuthProvider employs React Context for global state management, centralizing authentication state and ensuring seamless access to user information and authentication status across the entire application.
- ####  UseState
+The AuthProvider employs React Context for global state management, centralizing authentication state and ensuring seamless access to user information and authentication status across the entire application.
+ ###  UseState
  Throughout the entire project, the ubiquitous use of useState hooks enables dynamic state management, allowing components to maintain and update their local state, enhancing responsiveness and interactivity within the application. 
 ### Routing
    
