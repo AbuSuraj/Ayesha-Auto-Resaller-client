@@ -29,7 +29,7 @@ The AuthProvider employs React Context for global state management, centralizing
  I define a PrivateRoutes component that serves as a guard for rendering private content in a this application. It utilizes the useContext hook to access authentication information from the AuthContext.
 ### Fetching 
 
-1.  #### useEffect: it is used to perfrom side effects.
+1.  #### ```useEffect```: it is used to perfrom side effects.
     Used in checkOut, authProvider, custom hook (useAdmin, useSeller, useToken, useBuyer) etc.
 
 2. #### tanstack query: this library is used for efficient and declarative data fetching, caching, and state management.
