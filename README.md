@@ -21,9 +21,22 @@ This project hosted in firebase. <br/>
     The AuthProvider employs React Context for global state management, centralizing authentication state and ensuring seamless access to user information and authentication status across the entire application.
  ####  UseState
     Throughout the entire project, the ubiquitous use of useState hooks enables dynamic state management, allowing components to maintain and update their local state, enhancing responsiveness and interactivity within the application.
+### Routing
+   
+    I configure React routes with react-router-dom, organizing components for a main layout, blog, authentication forms, home page, and a detailed dashboard. It supports private routes for authenticated users and admin-specific routes, improving overall user and administrative experience.
+### Route Guard
+    
+    I define a PrivateRoutes component that serves as a guard for rendering private content in a this application. It utilizes the useContext hook to access authentication information from the AuthContext.
+### Fetching 
 
+1.  #### useEffect: it is used to perfrom side effects.
+    Used in checkOut, authProvider, custom hook (useAdmin, useSeller, useToken, useBuyer) etc.
 
-
+2. #### tanstack query: this library is used for efficient and declarative data fetching, caching, and state management.
+    used in AllBuyers, AllSellers, MyOrders, MyProducts, Product, Categories and so on. 
+3. #### axios: simplifying API interactions and enhancing code readability  
+   used in AddAProduct componet.
+4.  #### loader: The useLoaderData hook from react-router-dom is used to retrieve booking data
 ## Project Description
 <li>A simple Resale Car website made with using MERN Stack technology.</li>
 <li>To sign up there is a option for account type- buyer and seller. By default and google sign up is considered as buyer.</li>
