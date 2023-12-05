@@ -59,21 +59,76 @@ The AuthProvider employs React Context for global state management, centralizing
 4.  #### ``` loader ``` : The useLoaderData hook from react-router-dom is used to retrieve booking data
 ## Project Description
 <li>A simple Resale Car website made with using MERN Stack technology.</li>
+
+### authenctication
+<div>
 <li>To sign up there is a option for account type- buyer and seller. By default and google sign up is considered as buyer.</li>
-<li>Navbar have some routes, among them  Dashboard is private, others public routes are home, Blog, Sign In, and Sign Up.</li> 
-<li>Dashboard menu is changed in accordance with account type.</li>
-<li>"My Order" menu is for Buyer, "Add a product", "My Product" are for seller, and "All seller", "all Buyer", "add a category", and "Reported Item" are for admin.
+<img src="./src/Assests/Images/signup.png" alt="Signup">
+<img src="./src/Assests/Images/login.png" alt="login">
+</div>
+<div>
+
+### Home
 <li>Home page have a few section such as banner, Cars cateogry, FAQ, and Advertisement.</li> 
-<li>Categories are  shown on the home page, moreover, if user click "See All Cars" then one  can see available all cars for this category.</li> 
+<li>Navbar have some routes, among them  Dashboard is private, others public routes are home, Blog, Sign In, and Sign Up.</li> 
+<li>Categories are  shown on the home page, moreover, if user click <b>"See All Cars"</b> then one  can see available all cars for this category.</li> 
+<img src="./src/Assests/Images/homepage.png" alt="home">
+</div>
+
+### categorires
+<div>
 <li>In category wise car page, there are details information for the available cars. Additionally, if the seller is verified then there is verified icon next to the sellers name.</li> 
 <li>In addition, in the bottom of the each car, there are two buttons, Book Now and report this item.</li>
-<li>If the buyer, booked a car then it is available in  My Orders.</li>
-<li>Clicking in Pay button, will take buyer to card payment system</li>
-<li>"Report This Item", will send a report to admin, admin can delete this reported Item.</li>
-<li>Login is must needed to Book a car.</li> 
+<img src="./src/Assests/Images/category-wise-product.png" alt="home">
+
+<li>Clicking on the <b>BOOK NOW</b> button there will be a modal with booking form </li>
+<img src="./src/Assests/Images/bookingModal.png" alt="bookingForm">
+<li>Clicking on the <b>REPORT THIS ITEM</b> button will send a report to admin & added in the report list, admin can delete this reported product.  </li>
+<img src="./src/Assests/Images/report.png" alt="REPORT">
+</div>
+
+### Dashboard
+<section>
+<li>Dashboard menu is changed in accordance with account type.</li>
+
+#### admin
+<div>
+<li>Admin has access all sellers, all buyers, reportem item lists and add a category </li>
+<li>can delete a seller, and a buyer, can verify a seller, can add a category.</li>  
+<li>All Sellers</li>
+<img src="./src/Assests/Images/admin-all-seller.png" alt="admin">
+<li>All Buyers</li>
+<img src="./src/Assests/Images/admin-all-buyers.png" alt="admin">
+<li>Reported Item </li>
+<img src="./src/Assests/Images/admin-report.png" alt="admin">
+<li>Add a Category </li>
+<img src="./src/Assests/Images/admin-addCategory.png" alt="admin">
+</div>
+
+<div>
+
+#### Seller
 <li>Seller can add a product, can send a product for addvetisement, can delete a product.</li>
 <li>If a seller want then he can advertise his unsold car, and this item is added into the home page advertisement section.</li>
-<li>Admin, can delete a seller, and a buyer, can verify a seller, can add a category.</li>  
+<img src="./src/Assests/Images/seller-my-products.png" alt="seller">
+<li>Adding a product by Seller</li>
+<img src="./src/Assests/Images/seller-add-product.png" alt="seller">
+</div>
+
+<div>
+
+### Buyers
+<li>If the buyer, booked a car then it is available in  My Orders.</li>
+<img src="./src/Assests/Images/buyer-my-orders.png" alt="buyer">
+<li>Clicking in Pay button, will take buyer to card payment system</li>
+<img src="./src/Assests/Images/checkout.png" alt="buyer">
+</div>
+</section>
+
+<!-- <li>"Report This Item", will send a report to admin, admin can delete this reported Item.</li> -->
+<li>Login is must needed to Book a car.</li> 
+
+
 <li>Dynamic page title is also available.</li> 
 <li>Sensetive information are kept away from public with the help of environment varibale.</li>
 
