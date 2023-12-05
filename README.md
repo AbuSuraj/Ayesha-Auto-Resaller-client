@@ -1,4 +1,23 @@
  # Ayesha Auto Reseller
+
+## How to use this project
+
+1. Clone the GitHub repository to your local machine.
+
+   ```bash
+   git clone https://github.com/AbuSuraj/Ayesha-Auto-Resaller-client.git
+
+2. Navigate to the project directory.
+
+   ```
+      cd Ayesha-Auto-Resaller-client.
+
+3. Install the project dependencies using npm.
+   ```
+    npm install.
+4. Run the following command
+   ```
+   npm start
  ## Admin credentials
 <li>adminEmail:< abusurajbd@gmail.com > </li>
 <li>adminPassword:<@bSuraj123></li>
