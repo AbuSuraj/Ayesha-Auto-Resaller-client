@@ -82,7 +82,7 @@ The AuthProvider employs React Context for global state management, centralizing
 <img src="./src/Assests/Images/category-wise-product.png" alt="home">
 
 <li>Clicking on the <b>BOOK NOW</b> button there will be a modal with booking form </li>
-<img src="./src/Assests/Images/bookingModal.png" alt="bookingForm">
+<img src="./src/Assests/Images/bookingModal.PNG" alt="bookingForm">
 <li>Clicking on the <b>REPORT THIS ITEM</b> button will send a report to admin & added in the report list, admin can delete this reported product.  </li>
 <img src="./src/Assests/Images/report.png" alt="REPORT">
 </div>
