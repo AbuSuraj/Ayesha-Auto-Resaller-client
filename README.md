@@ -10,11 +10,11 @@
 2. Navigate to the project directory.
 
    ```
-      cd Ayesha-Auto-Resaller-client.
+    cd Ayesha-Auto-Resaller-client.
 
 3. Install the project dependencies using npm.
-   ```
-    npm install.
+   ``` 
+   npm install.
 4. Run the following command
    ```
    npm start
