@@ -24,7 +24,7 @@ const Login = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
-
+  const [createdUserEmail, setCreatedUserEmail] = useState("");
   const from = location.state?.from?.pathname || "/";
   if (token) {
     // navigate('/');
@@ -48,16 +48,40 @@ const Login = () => {
   };
 
   // Google Signin
-  const handleGoogleSignin = () => {
-    signInWithGoogle().then((result) => {
-      toast.success("Login Success!");
-      //   console.log(result.user.email);
-      setLoginUserEmail(result.user.email);
-      navigate(from, { replace: true });
-    });
-  };
+  // const handleGoogleSignin = () => {
+  //   signInWithGoogle().then((result) => {
+  //     toast.success("Login Success!");
+  //     //   console.log(result.user.email);
+  //     setLoginUserEmail(result.user.email);
+  //     navigate(from, { replace: true });
+  //   });
+  // };
   //   console.log(loginUserEmail);
 
+  const handleGoogleSignin = () => {
+    signInWithGoogle().then(result => {
+      // console.log(result.user);
+      const accountType = 'buyer';
+      // console.log(result.user.displayName,result.user.email, accountType);
+      toast.success("User created Successfully with Google!");
+      saveUser(result.user.displayName,result.user.email, accountType);
+      navigate(from, { replace: true })
+    })
+  }
+  const saveUser = (name, email, accountType) =>{
+    const user ={name, email,accountType};
+    fetch('https://auto-reseller-api.vercel.app/users', {
+        method: 'POST',
+        headers: {
+            'content-type': 'application/json'
+        },
+        body: JSON.stringify(user)
+    })
+    .then(res => res.json())
+    .then(data =>{
+        setCreatedUserEmail(email);
+    })
+}
   if (loading) {
     return (
         <div className="spinner"></div>
