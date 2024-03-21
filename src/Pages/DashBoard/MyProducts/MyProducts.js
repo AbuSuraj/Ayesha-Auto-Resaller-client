@@ -17,7 +17,7 @@ const MyProducts = () => {
     queryKey: ["myproducts"],
     queryFn: async () => {
       const res = await fetch(
-        `https://auto-reseller-api.vercel.app/myproducts/seller/${email}`,
+        `http://localhost:5000/products/seller/${email}`,
  {       headers: {
           'content-type': 'application/json',
           authorization: `bearer ${localStorage.getItem('accessToken')}`
@@ -31,7 +31,7 @@ const MyProducts = () => {
 
 const handleAdvertise = id =>{
   // console.log(id)
-  fetch(`https://auto-reseller-api.vercel.app/products/advertise/${id}`,{
+  fetch(`http://localhost:5000/products/advertisement/${id}`,{
     method: 'PATCH',
     headers: {
         'content-type':'application/json',
@@ -60,7 +60,7 @@ const handleDeleteProduct = (id) =>{
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`https://auto-reseller-api.vercel.app/product/${id}`, {
+        fetch(`http://localhost:5000/products/${id}`, {
           method: "DELETE",
           headers: {
             'content-type': 'application/json',
