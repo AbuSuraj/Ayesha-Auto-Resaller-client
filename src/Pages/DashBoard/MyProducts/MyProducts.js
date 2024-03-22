@@ -30,7 +30,7 @@ const MyProducts = () => {
   
 
 const handleAdvertise = id =>{
-  // console.log(id)
+  console.log(id)
   fetch(`http://localhost:5000/products/advertisement/${id}`,{
     method: 'PATCH',
     headers: {
@@ -131,7 +131,7 @@ const handleDeleteProduct = (id) =>{
                 <td>
                   { myProduct.isPaid ? "No Action need" :
                    <>
-                  {            myProduct.isAdvertised ==='false' ?
+                  {            myProduct.isAdvertised === false ?
                     <button
                     onClick={() => handleAdvertise(myProduct._id)}
                     

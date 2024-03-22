@@ -14,11 +14,11 @@ const CheckoutForm = ({ booking }) => {
 
     useEffect(() => {
         // Create PaymentIntent as soon as the page loads
-        fetch("http://localhost:5001/payment/create-payment-intent", {
+        fetch("http://localhost:5000/payment/create-payment-intent", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                // authorization: `bearer ${localStorage.getItem('accessToken')}`
+                authorization: `bearer ${localStorage.getItem('accessToken')}`
             },
             body: JSON.stringify({ resalePrice }),
         })
@@ -65,7 +65,7 @@ const CheckoutForm = ({ booking }) => {
                 },
             },
         );
-
+    console.log(paymentIntent);
         if (confirmError) {
             setCardError(confirmError.message);
             return;
@@ -102,6 +102,8 @@ const CheckoutForm = ({ booking }) => {
 
 
     }
+    
+    console.log(paymentstatus)
 
     return (
         <>
