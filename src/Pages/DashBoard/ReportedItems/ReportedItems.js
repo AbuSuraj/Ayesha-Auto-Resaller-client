@@ -25,7 +25,12 @@ const ReportedItems = () => {
         queryFn: async ({queryKey}) => {
           const [key, page, column, direction] = queryKey;
         
-          const res = await fetch(`https://auto-reseller-api.vercel.app/report?page=${page}&limit=${reportsPerPage}&sort=${column}&order=${direction}`);
+          const res = await fetch(`http://localhost:5000/report?page=${page}&limit=${reportsPerPage}&sort=${column}&order=${direction}`, {
+            headers: {
+              "content-type": "application/json",
+              authorization: `bearer ${localStorage.getItem("accessToken")}`,
+            },
+          });
           const data = await res.json();
           return data;
         },
@@ -49,7 +54,7 @@ const ReportedItems = () => {
           confirmButtonText: "Yes, delete it!",
         }).then((result) => {
           if (result.isConfirmed) {
-            fetch(`https://auto-reseller-api.vercel.app/report/${itemId}`, {
+            fetch(`http://localhost:5000/report/${itemId}`, {
               method: "DELETE",
               headers: {
                 'content-type': 'application/json',
@@ -64,7 +69,7 @@ const ReportedItems = () => {
                 } 
               });
             //   deleting reported item 
-              fetch(`https://auto-reseller-api.vercel.app/reportedItem/${itemId}`, {
+              fetch(`http://localhost:5000/report/item/${itemId}`, {
                 method: "DELETE",
                 headers: {
                   'content-type': 'application/json',

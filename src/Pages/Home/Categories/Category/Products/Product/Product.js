@@ -24,7 +24,7 @@ const Product = ({product}) => {
  } = useQuery({
    queryKey: ["sellers"],
    queryFn: async () => {
-     const res = await fetch("https://auto-reseller-api.vercel.app/sellers",
+     const res = await fetch("http://localhost:5000/users/sellers",
      {    headers: {
       'content-type': 'application/json',
       authorization: `bearer ${localStorage.getItem('accessToken')}`
@@ -44,7 +44,7 @@ const Product = ({product}) => {
 // console.log(product);
 
 const reportedItem = {product_id:_id,productName,condition,originalPrice,resalePrice,location,mobile,productDescription,purchaseYear,createdDate,image, seller, email}
-fetch('https://auto-reseller-api.vercel.app/report', {
+fetch('http://localhost:5000/report', {
    method: 'POST',
    headers: {
        'content-type': 'application/json',

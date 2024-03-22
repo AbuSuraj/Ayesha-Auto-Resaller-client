@@ -5,7 +5,7 @@ const useSeller = email => {
     const [isSellerLoading, setIsSellerLoading] = useState(true);
     useEffect(() => {
         if (email) {
-            fetch(`https://auto-reseller-api.vercel.app/users/seller/${email}`,
+            fetch(`http://localhost:5000/users/seller/${email}`,
             {   headers: {
                 'content-type': 'application/json',
                 authorization: `bearer ${localStorage.getItem('accessToken')}`
