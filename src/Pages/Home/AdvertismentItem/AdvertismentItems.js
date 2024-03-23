@@ -12,7 +12,7 @@ const AdvertismentItems = () => {
   } = useQuery({
     queryKey: ["advertisementItem"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/products/advertisement");
+      const res = await fetch("https://auto-reseller-api.vercel.app/products/advertisement");
       const data = await res.json();
       return data;
     },

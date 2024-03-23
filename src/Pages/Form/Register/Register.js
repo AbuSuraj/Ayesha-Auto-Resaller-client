@@ -66,7 +66,7 @@ const Register = () => {
   }
   const saveUser = (name, email, accountType) =>{
     const user ={name, email,accountType};
-    fetch('http://localhost:5000/users', {
+    fetch('https://auto-reseller-api.vercel.app/users', {
         method: 'POST',
         headers: {
             'content-type': 'application/json'

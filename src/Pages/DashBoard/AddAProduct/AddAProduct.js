@@ -55,7 +55,7 @@ const AddAProduct = () => {
                 }
                 // console.log(product);
                 // added product into db
-                fetch('http://localhost:5000/products/add', {
+                fetch('https://auto-reseller-api.vercel.app/products/add', {
                   method: 'POST',
                   headers: {
                       'content-type': 'application/json',
@@ -81,7 +81,7 @@ const AddAProduct = () => {
      }
     //  fetching categories
 useEffect(()=>{
-  axios.get('http://localhost:5000/categories')
+  axios.get('https://auto-reseller-api.vercel.app/categories')
   .then((data) =>{
     console.log(data);
     setCategories(data.data);
