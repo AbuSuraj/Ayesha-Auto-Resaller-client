@@ -12,7 +12,7 @@ const Products = () => {
     const { data: products = [], refetch, isLoading } = useQuery({
         queryKey: ['category'],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/categories/${id}`,
+            const res = await fetch(`https://auto-reseller-api.vercel.app/categories/${id}`,
             {     headers: {
                 'content-type': 'application/json',
                 authorization: `bearer ${localStorage.getItem('accessToken')}`

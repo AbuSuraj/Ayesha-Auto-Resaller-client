@@ -16,7 +16,7 @@ const MyOrders = () => {
       queryKey: ["myorders"],
       queryFn: async () => {
         const res = await fetch(
-          `http://localhost:5000/booking/orders/${email}`,
+          `https://auto-reseller-api.vercel.app/booking/orders/${email}`,
           {
             headers: {
               'content-type': 'application/json',

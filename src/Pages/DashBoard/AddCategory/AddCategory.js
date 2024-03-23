@@ -35,7 +35,7 @@ const AddCategory = () => {
                     image: imgData.data.url
                 }
                 // console.log(category);
-                fetch('http://localhost:5000/categories/add', {
+                fetch('https://auto-reseller-api.vercel.app/categories/add', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json',
